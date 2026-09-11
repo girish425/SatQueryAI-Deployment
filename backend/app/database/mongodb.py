@@ -1,6 +1,7 @@
 import os
 import re
 import json
+import uuid
 import logging
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
@@ -58,7 +59,9 @@ class LocalFallbackStore:
         self.data_dir = Path(data_dir)
         self.data_dir.mkdir(parents=True, exist_ok=True)
         self.file_path = self.data_dir / "conversations_store.json"
+        self.users_path = self.data_dir / "users_store.json"
         self._cache: Dict[str, Dict[str, Any]] = {}
+        self._users: Dict[str, Dict[str, Any]] = {}
         self._load()
 
     def _load(self):
@@ -69,6 +72,13 @@ class LocalFallbackStore:
             except Exception as e:
                 logger.warning(f"Failed to load fallback store: {e}")
                 self._cache = {}
+        if self.users_path.exists():
+            try:
+                with open(self.users_path, "r", encoding="utf-8") as f:
+                    self._users = json.load(f)
+            except Exception as e:
+                logger.warning(f"Failed to load users store: {e}")
+                self._users = {}
 
     def _save(self):
         try:
@@ -77,11 +87,49 @@ class LocalFallbackStore:
         except Exception as e:
             logger.error(f"Failed to save fallback store: {e}")
 
-    def get_conversation(self, session_id: str) -> Optional[Dict[str, Any]]:
-        return self._cache.get(session_id)
+    def _save_users(self):
+        try:
+            with open(self.users_path, "w", encoding="utf-8") as f:
+                json.dump(self._users, f, indent=2, default=str)
+        except Exception as e:
+            logger.error(f"Failed to save users store: {e}")
 
-    def list_conversations(self) -> List[Dict[str, Any]]:
+    def create_user(self, email: str, password_hash: str, full_name: str) -> Dict[str, Any]:
+        user_id = str(uuid.uuid4())
+        now = datetime.now(timezone.utc).isoformat()
+        user_doc = {
+            "user_id": user_id,
+            "email": email.lower().strip(),
+            "password_hash": password_hash,
+            "full_name": full_name.strip(),
+            "created_at": now
+        }
+        self._users[user_id] = user_doc
+        self._save_users()
+        return user_doc
+
+    def get_user_by_email(self, email: str) -> Optional[Dict[str, Any]]:
+        norm = email.lower().strip()
+        for u in self._users.values():
+            if u.get("email", "").lower().strip() == norm:
+                return u
+        return None
+
+    def get_user_by_id(self, user_id: str) -> Optional[Dict[str, Any]]:
+        return self._users.get(user_id)
+
+    def get_conversation(self, session_id: str, user_id: Optional[str] = None) -> Optional[Dict[str, Any]]:
+        conv = self._cache.get(session_id)
+        if not conv:
+            return None
+        if user_id and conv.get("user_id") and conv.get("user_id") != user_id:
+            return None
+        return conv
+
+    def list_conversations(self, user_id: Optional[str] = None) -> List[Dict[str, Any]]:
         convs = list(self._cache.values())
+        if user_id:
+            convs = [c for c in convs if c.get("user_id") == user_id]
         convs.sort(key=lambda x: x.get("updated_at", ""), reverse=True)
         return convs
 
@@ -91,13 +139,15 @@ class LocalFallbackStore:
         title: str,
         messages: Optional[List[Dict[str, Any]]] = None,
         selected_model: Optional[str] = None,
-        image_references: Optional[List[str]] = None
+        image_references: Optional[List[str]] = None,
+        user_id: Optional[str] = None
     ) -> Dict[str, Any]:
         now = datetime.now(timezone.utc).isoformat()
         if session_id not in self._cache:
             self._cache[session_id] = {
                 "session_id": session_id,
                 "title": title,
+                "user_id": user_id,
                 "created_at": now,
                 "updated_at": now,
                 "selected_model": selected_model or "RS-MultiModal-Pipeline",
@@ -108,6 +158,8 @@ class LocalFallbackStore:
             conv = self._cache[session_id]
             conv["title"] = title or conv.get("title", "New Satellite Analysis")
             conv["updated_at"] = now
+            if user_id and not conv.get("user_id"):
+                conv["user_id"] = user_id
             if selected_model:
                 conv["selected_model"] = selected_model
             if image_references:
@@ -117,10 +169,13 @@ class LocalFallbackStore:
         self._save()
         return self._cache[session_id]
 
-    def add_message(self, session_id: str, message: Dict[str, Any]) -> None:
+    def add_message(self, session_id: str, message: Dict[str, Any], user_id: Optional[str] = None) -> None:
         if session_id not in self._cache:
-            self.save_conversation(session_id, "New Satellite Analysis", [])
-        self._cache[session_id]["messages"].append(message)
+            self.save_conversation(session_id, "New Satellite Analysis", [], user_id=user_id)
+        msg_clean = message.copy()
+        if user_id and "user_id" not in msg_clean:
+            msg_clean["user_id"] = user_id
+        self._cache[session_id]["messages"].append(msg_clean)
         self._cache[session_id]["updated_at"] = datetime.now(timezone.utc).isoformat()
         self._save()
 
@@ -185,7 +240,10 @@ class MongoDBConnectionManager:
             try:
                 self.db.conversations.create_index("session_id", unique=True)
                 self.db.conversations.create_index("updated_at")
+                self.db.conversations.create_index("user_id")
                 self.db.messages.create_index([("session_id", 1), ("timestamp", 1)])
+                self.db.messages.create_index("user_id")
+                self.db.users.create_index("email", unique=True)
             except Exception as ie:
                 logger.debug(f"Index creation note: {ie}")
 
@@ -265,31 +323,80 @@ class MongoDBConnectionManager:
         return health_data
 
     # -------------------------------------------------------------
-    # Session & Message Persistence Methods
+    # User Authentication & Management Methods
     # -------------------------------------------------------------
 
-    def get_conversation(self, session_id: str) -> Optional[Dict[str, Any]]:
-        """Retrieve full conversation transcript and messages for session."""
+    def create_user(self, email: str, password_hash: str, full_name: str) -> Dict[str, Any]:
+        """Create a new user in MongoDB Atlas (with fallback)."""
+        user_id = str(uuid.uuid4())
+        now = datetime.now(timezone.utc).isoformat()
+        user_doc = {
+            "user_id": user_id,
+            "email": email.lower().strip(),
+            "password_hash": password_hash,
+            "full_name": full_name.strip(),
+            "created_at": now
+        }
         if self.is_connected and self.db is not None:
             try:
-                conv = self.db.conversations.find_one({"session_id": session_id}, {"_id": 0})
+                self.db.users.insert_one(user_doc.copy())
+            except Exception as e:
+                logger.error(f"Error inserting user to MongoDB: {e}")
+        return self.fallback.create_user(email, password_hash, full_name)
+
+    def get_user_by_email(self, email: str) -> Optional[Dict[str, Any]]:
+        """Find a user by email address."""
+        norm = email.lower().strip()
+        if self.is_connected and self.db is not None:
+            try:
+                u = self.db.users.find_one({"email": norm}, {"_id": 0})
+                if u:
+                    return u
+            except Exception as e:
+                logger.error(f"Error finding user by email: {e}")
+        return self.fallback.get_user_by_email(email)
+
+    def get_user_by_id(self, user_id: str) -> Optional[Dict[str, Any]]:
+        """Find a user by unique user_id."""
+        if self.is_connected and self.db is not None:
+            try:
+                u = self.db.users.find_one({"user_id": user_id}, {"_id": 0})
+                if u:
+                    return u
+            except Exception as e:
+                logger.error(f"Error finding user by id: {e}")
+        return self.fallback.get_user_by_id(user_id)
+
+    # -------------------------------------------------------------
+    # Session & Message Persistence Methods (with User Privacy)
+    # -------------------------------------------------------------
+
+    def get_conversation(self, session_id: str, user_id: Optional[str] = None) -> Optional[Dict[str, Any]]:
+        """Retrieve full conversation transcript and messages for session, strictly verifying user ownership."""
+        if self.is_connected and self.db is not None:
+            try:
+                query = {"session_id": session_id}
+                if user_id:
+                    query["user_id"] = user_id
+                conv = self.db.conversations.find_one(query, {"_id": 0})
                 if conv:
                     messages = list(self.db.messages.find({"session_id": session_id}, {"_id": 0}).sort("timestamp", 1))
                     conv["messages"] = messages
                     return conv
             except Exception as e:
                 logger.error(f"Error fetching conversation from MongoDB: {e}")
-        return self.fallback.get_conversation(session_id)
+        return self.fallback.get_conversation(session_id, user_id=user_id)
 
-    def list_conversations(self) -> List[Dict[str, Any]]:
-        """List all conversation sessions ordered by latest update."""
+    def list_conversations(self, user_id: Optional[str] = None) -> List[Dict[str, Any]]:
+        """List conversation sessions filtered by user_id for strict privacy."""
         if self.is_connected and self.db is not None:
             try:
-                convs = list(self.db.conversations.find({}, {"_id": 0}).sort("updated_at", -1))
+                query = {"user_id": user_id} if user_id else {}
+                convs = list(self.db.conversations.find(query, {"_id": 0}).sort("updated_at", -1))
                 return convs
             except Exception as e:
                 logger.error(f"Error listing conversations from MongoDB: {e}")
-        return self.fallback.list_conversations()
+        return self.fallback.list_conversations(user_id=user_id)
 
     def save_conversation(
         self,
@@ -297,11 +404,12 @@ class MongoDBConnectionManager:
         title: str,
         messages: Optional[List[Dict[str, Any]]] = None,
         selected_model: Optional[str] = None,
-        image_references: Optional[List[str]] = None
+        image_references: Optional[List[str]] = None,
+        user_id: Optional[str] = None
     ) -> Dict[str, Any]:
         """
         Store chat session, user queries, AI responses, selected models,
-        timestamps, and uploaded image references.
+        timestamps, uploaded image references, and owner user_id.
         """
         now = datetime.now(timezone.utc).isoformat()
         conv_doc = {
@@ -311,6 +419,8 @@ class MongoDBConnectionManager:
             "selected_model": selected_model or "RS-MultiModal-Pipeline",
             "image_references": image_references or []
         }
+        if user_id:
+            conv_doc["user_id"] = user_id
 
         if self.is_connected and self.db is not None:
             try:
@@ -326,6 +436,8 @@ class MongoDBConnectionManager:
                     for msg in messages:
                         msg_clean = msg.copy()
                         msg_clean["session_id"] = session_id
+                        if user_id and "user_id" not in msg_clean:
+                            msg_clean["user_id"] = user_id
                         self.db.messages.update_one(
                             {
                                 "session_id": session_id,
@@ -343,26 +455,32 @@ class MongoDBConnectionManager:
             title=title,
             messages=messages,
             selected_model=selected_model,
-            image_references=image_references
+            image_references=image_references,
+            user_id=user_id
         )
 
-    def add_message(self, session_id: str, message: Dict[str, Any]) -> None:
-        """Append an individual user or assistant message to session."""
+    def add_message(self, session_id: str, message: Dict[str, Any], user_id: Optional[str] = None) -> None:
+        """Append an individual user or assistant message to session with user privacy."""
         msg_clean = message.copy()
         msg_clean["session_id"] = session_id
+        if user_id and "user_id" not in msg_clean:
+            msg_clean["user_id"] = user_id
         if "timestamp" not in msg_clean:
             msg_clean["timestamp"] = datetime.now(timezone.utc).isoformat()
 
         if self.is_connected and self.db is not None:
             try:
                 self.db.messages.insert_one(msg_clean)
+                update_set = {
+                    "updated_at": msg_clean["timestamp"],
+                    "selected_model": msg_clean.get("selected_model") or msg_clean.get("model_used", "RS-MultiModal-Pipeline")
+                }
+                if user_id:
+                    update_set["user_id"] = user_id
                 self.db.conversations.update_one(
                     {"session_id": session_id},
                     {
-                        "$set": {
-                            "updated_at": msg_clean["timestamp"],
-                            "selected_model": msg_clean.get("selected_model") or msg_clean.get("model_used", "RS-MultiModal-Pipeline")
-                        },
+                        "$set": update_set,
                         "$addToSet": {
                             "image_references": {"$each": msg_clean.get("image_references", [])}
                         }
@@ -372,7 +490,7 @@ class MongoDBConnectionManager:
             except Exception as e:
                 logger.error(f"Error saving message to MongoDB: {e}")
 
-        self.fallback.add_message(session_id, message)
+        self.fallback.add_message(session_id, message, user_id=user_id)
 
     def delete_conversation(self, session_id: str) -> bool:
         """Remove conversation and all associated messages."""

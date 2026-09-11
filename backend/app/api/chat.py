@@ -1,16 +1,17 @@
 import os
 from pathlib import Path
-from typing import List
-from fastapi import APIRouter, HTTPException
+from typing import List, Optional
+from fastapi import APIRouter, HTTPException, Depends
 from backend.app.database.schemas import ChatRequest, ChatResponse
 from backend.app.agent.controller import agent_controller
+from backend.app.api.auth import get_current_user
 
 router = APIRouter(tags=["chat"])
 UPLOAD_DIR = Path("./uploads")
 
 
 @router.post("/chat/", response_model=ChatResponse)
-async def chat_query(request: ChatRequest):
+async def chat_query(request: ChatRequest, current_user: Optional[dict] = Depends(get_current_user)):
     """
     Primary chat endpoint. Passes user question and attached images to the Agent Controller,
     which determines intent, selects ONE model workflow, executes it, and records conversation.
@@ -45,10 +46,12 @@ async def chat_query(request: ChatRequest):
         )
 
     try:
+        user_id = current_user.get("user_id") if current_user else None
         response_data = agent_controller.process_query(
             query=request.query,
             image_paths=resolved_paths,
-            session_id=request.session_id
+            session_id=request.session_id,
+            user_id=user_id
         )
         return response_data
     except ValueError as ve:

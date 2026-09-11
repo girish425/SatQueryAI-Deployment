@@ -1750,10 +1750,76 @@
     "session_id": "00387da7-e3a2-4ad2-9ce7-0e5bff98f244",
     "title": "New Satellite Analysis",
     "created_at": "2026-09-11T18:03:20.394724+00:00",
-    "updated_at": "2026-09-11T18:03:20.394724+00:00",
+    "updated_at": "2026-09-11T19:32:16.411015+00:00",
     "selected_model": "RS-MultiModal-Pipeline",
     "image_references": [],
-    "messages": []
+    "messages": [
+      {
+        "session_id": "00387da7-e3a2-4ad2-9ce7-0e5bff98f244",
+        "role": "user",
+        "message": "Is there water in this image?",
+        "query": "Is there water in this image?",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T19:32:15.240916+00:00"
+      },
+      {
+        "session_id": "00387da7-e3a2-4ad2-9ce7-0e5bff98f244",
+        "role": "assistant",
+        "message": "Yes, water-like bodies are clearly present in this satellite image.",
+        "query": "Is there water in this image?",
+        "ai_response": {
+          "summary": "Yes, water-like bodies are clearly present in this satellite image.",
+          "key_findings": [
+            "Size: Covers about 8.59% of the total land area.",
+            "Location: Most of it is gathered in the middle-right (east) section.",
+            "Visual Map: The detected areas are marked in bright yellow in the evidence image below."
+          ],
+          "explanation": "What this means: The satellite camera detected distinct color and light patterns that match water. You can see exactly where they are by looking at the yellow areas highlighted in the picture below."
+        },
+        "selected_model": "RS-VQA-Spectral-Baseline",
+        "model_used": "RS-VQA-Spectral-Baseline",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T19:32:15.240916+00:00",
+        "intent": "vqa",
+        "intent_confidence": 0.96,
+        "answer": {
+          "summary": "Yes, water-like bodies are clearly present in this satellite image.",
+          "key_findings": [
+            "Size: Covers about 8.59% of the total land area.",
+            "Location: Most of it is gathered in the middle-right (east) section.",
+            "Visual Map: The detected areas are marked in bright yellow in the evidence image below."
+          ],
+          "explanation": "What this means: The satellite camera detected distinct color and light patterns that match water. You can see exactly where they are by looking at the yellow areas highlighted in the picture below."
+        },
+        "evidence": {
+          "original_image": "/evidence/sample_optical_hyderabad_preview.png",
+          "overlay_image": "/evidence/sample_optical_hyderabad_vqa_overlay.png",
+          "difference_image": null
+        },
+        "technical_details": {
+          "dimensions": "512 x 512",
+          "bands": 3,
+          "crs": "EPSG:4326 (WGS84)",
+          "processing_time_sec": 0.04,
+          "preprocessing_info": "Normalized 3-band raster, evaluated 262144 pixels against water spectral index.",
+          "selected_intent": "vqa",
+          "intent_confidence": 0.96,
+          "model_selected": "RS-VQA-Spectral-Baseline"
+        },
+        "confidence": 0.75,
+        "processing_time": 0.04
+      }
+    ]
   },
   "1815ed86-0706-4ead-89ac-c4ab0f4e9bc3": {
     "session_id": "1815ed86-0706-4ead-89ac-c4ab0f4e9bc3",
@@ -2070,5 +2136,108 @@
         "processing_time": 0.08
       }
     ]
+  },
+  "45ed64b8-e004-40c5-8e18-8860a3f0aefd": {
+    "session_id": "45ed64b8-e004-40c5-8e18-8860a3f0aefd",
+    "title": "New Satellite Analysis",
+    "created_at": "2026-09-11T19:30:43.993264+00:00",
+    "updated_at": "2026-09-11T19:30:43.993264+00:00",
+    "selected_model": "RS-MultiModal-Pipeline",
+    "image_references": [],
+    "messages": []
+  },
+  "fe95ec02-ce78-4391-836e-ef935b5774ca": {
+    "session_id": "fe95ec02-ce78-4391-836e-ef935b5774ca",
+    "title": "New Satellite Analysis",
+    "created_at": "2026-09-11T19:31:07.183333+00:00",
+    "updated_at": "2026-09-11T19:31:15.080856+00:00",
+    "selected_model": "RS-MultiModal-Pipeline",
+    "image_references": [],
+    "messages": [
+      {
+        "session_id": "fe95ec02-ce78-4391-836e-ef935b5774ca",
+        "role": "user",
+        "message": "Are there buildings?",
+        "query": "Are there buildings?",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T19:31:14.805415+00:00"
+      },
+      {
+        "session_id": "fe95ec02-ce78-4391-836e-ef935b5774ca",
+        "role": "assistant",
+        "message": "Yes, built-up structures and man-made surfaces are clearly present in this satellite image.",
+        "query": "Are there buildings?",
+        "ai_response": {
+          "summary": "Yes, built-up structures and man-made surfaces are clearly present in this satellite image.",
+          "key_findings": [
+            "Size: Covers about 3.89% of the total land area.",
+            "Location: Most of it is gathered in the middle-left (west) section.",
+            "Visual Map: The detected areas are marked in bright yellow in the evidence image below."
+          ],
+          "explanation": "What this means: The satellite camera detected distinct color and light patterns that match buildings. You can see exactly where they are by looking at the yellow areas highlighted in the picture below."
+        },
+        "selected_model": "RS-VQA-Spectral-Baseline",
+        "model_used": "RS-VQA-Spectral-Baseline",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T19:31:14.805415+00:00",
+        "intent": "vqa",
+        "intent_confidence": 0.96,
+        "answer": {
+          "summary": "Yes, built-up structures and man-made surfaces are clearly present in this satellite image.",
+          "key_findings": [
+            "Size: Covers about 3.89% of the total land area.",
+            "Location: Most of it is gathered in the middle-left (west) section.",
+            "Visual Map: The detected areas are marked in bright yellow in the evidence image below."
+          ],
+          "explanation": "What this means: The satellite camera detected distinct color and light patterns that match buildings. You can see exactly where they are by looking at the yellow areas highlighted in the picture below."
+        },
+        "evidence": {
+          "original_image": "/evidence/sample_optical_hyderabad_preview.png",
+          "overlay_image": "/evidence/sample_optical_hyderabad_vqa_overlay.png",
+          "difference_image": null
+        },
+        "technical_details": {
+          "dimensions": "512 x 512",
+          "bands": 3,
+          "crs": "EPSG:4326 (WGS84)",
+          "processing_time_sec": 0.08,
+          "preprocessing_info": "Normalized 3-band raster, evaluated 262144 pixels against buildings spectral index.",
+          "selected_intent": "vqa",
+          "intent_confidence": 0.96,
+          "model_selected": "RS-VQA-Spectral-Baseline"
+        },
+        "confidence": 0.75,
+        "processing_time": 0.08
+      }
+    ]
+  },
+  "0c388ab2-25dc-4405-90b4-d206b35d4789": {
+    "session_id": "0c388ab2-25dc-4405-90b4-d206b35d4789",
+    "title": "New Satellite Analysis",
+    "created_at": "2026-09-11T19:36:01.976630+00:00",
+    "updated_at": "2026-09-11T19:36:01.976630+00:00",
+    "selected_model": "RS-MultiModal-Pipeline",
+    "image_references": [],
+    "messages": []
+  },
+  "59e2f4be-badb-41a8-b5d8-59cc15870223": {
+    "session_id": "59e2f4be-badb-41a8-b5d8-59cc15870223",
+    "title": "New Satellite Analysis",
+    "user_id": "7a35f08f-f024-4558-9e21-31c3bc56c023",
+    "created_at": "2026-09-11T19:44:04.476014+00:00",
+    "updated_at": "2026-09-11T19:44:04.476014+00:00",
+    "selected_model": "RS-MultiModal-Pipeline",
+    "image_references": [],
+    "messages": []
   }
 }

@@ -6,6 +6,8 @@ export default function Sidebar({
   conversations,
   activeSessionId,
   dbStatus,
+  currentUser,
+  onLogout,
   onNewChat,
   onSelectSession,
   onDeleteSession,
@@ -56,7 +58,25 @@ export default function Sidebar({
         />
       </div>
 
-      {/* Database Connection Status */}
+      {/* User Profile & Sign Out */}
+      {currentUser && (
+        <div className="user-profile-widget" style={{ margin: '8px 12px' }}>
+          <div className="user-profile-left">
+            <div className="user-avatar-badge">
+              {(currentUser.full_name || currentUser.email || 'U').substring(0, 2).toUpperCase()}
+            </div>
+            <div className="user-details">
+              <span className="user-name-text">{currentUser.full_name || 'Satellite Analyst'}</span>
+              <span className="user-email-text">{currentUser.email}</span>
+            </div>
+          </div>
+          <button type="button" onClick={onLogout} className="btn-signout" title="Sign out of private workspace">
+            Sign Out
+          </button>
+        </div>
+      )}
+
+      {/* Database Connection Status Footer */}
       <div style={{
         padding: '10px 14px',
         borderTop: '1px solid var(--border-subtle)',

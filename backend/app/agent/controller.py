@@ -22,7 +22,8 @@ class AgentController:
         self,
         query: str,
         image_paths: List[str],
-        session_id: Optional[str] = None
+        session_id: Optional[str] = None,
+        user_id: Optional[str] = None
     ) -> Dict[str, Any]:
         start_time = time.time()
         session_id = session_id or str(uuid.uuid4())
@@ -117,11 +118,12 @@ class AgentController:
                 title=title,
                 messages=[user_msg, asst_msg],
                 selected_model=model_info["name"],
-                image_references=img_refs
+                image_references=img_refs,
+                user_id=user_id
             )
         else:
-            db_manager.add_message(session_id, user_msg)
-            db_manager.add_message(session_id, asst_msg)
+            db_manager.add_message(session_id, user_msg, user_id=user_id)
+            db_manager.add_message(session_id, asst_msg, user_id=user_id)
 
         return response_payload
 

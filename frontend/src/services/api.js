@@ -19,6 +19,61 @@ const api = axios.create({
   },
 });
 
+// Automatically attach Bearer token if present
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem('satquery_token');
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
+export const authApi = {
+  async register(fullName, email, password) {
+    const response = await api.post('/api/auth/register', {
+      full_name: fullName,
+      email,
+      password,
+    });
+    if (response.data.token) {
+      localStorage.setItem('satquery_token', response.data.token);
+      localStorage.setItem('satquery_user', JSON.stringify(response.data.user));
+    }
+    return response.data;
+  },
+
+  async login(email, password) {
+    const response = await api.post('/api/auth/login', {
+      email,
+      password,
+    });
+    if (response.data.token) {
+      localStorage.setItem('satquery_token', response.data.token);
+      localStorage.setItem('satquery_user', JSON.stringify(response.data.user));
+    }
+    return response.data;
+  },
+
+  async getMe() {
+    const response = await api.get('/api/auth/me');
+    return response.data;
+  },
+
+  logout() {
+    localStorage.removeItem('satquery_token');
+    localStorage.removeItem('satquery_user');
+  },
+
+  getCurrentUser() {
+    try {
+      const stored = localStorage.getItem('satquery_user');
+      return stored ? JSON.parse(stored) : null;
+    } catch {
+      return null;
+    }
+  },
+};
+
 export const chatApi = {
   async sendMessage(sessionId, query, imageIds = []) {
     const response = await api.post('/chat/', {

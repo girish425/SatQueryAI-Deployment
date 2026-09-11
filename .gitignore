@@ -21,7 +21,7 @@ frontend/.env
 # Node / Vite
 node_modules/
 frontend/node_modules/
-dist/
+/dist/
 .vite/
 
 # Satellite Large Rasters & Output

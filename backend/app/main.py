@@ -21,6 +21,7 @@ from backend.app.api.retrieve import router as retrieve_router
 from backend.app.api.history import router as history_router
 from backend.app.api.pdf import router as pdf_router
 from backend.app.api.analysis import router as analysis_router
+from backend.app.api.auth import router as auth_router
 
 logging.basicConfig(
     level=logging.INFO,
@@ -69,6 +70,8 @@ app.include_router(retrieve_router)
 app.include_router(history_router)
 app.include_router(pdf_router)
 app.include_router(analysis_router)
+app.include_router(auth_router)
+app.include_router(auth_router, prefix="/api")
 
 
 from backend.app.database.mongodb import db_manager

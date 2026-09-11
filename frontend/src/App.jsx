@@ -3,7 +3,8 @@ import Sidebar from './components/Sidebar';
 import Chat from './pages/Chat';
 import ImageUpload from './components/ImageUpload';
 import RetrievalModal from './components/RetrievalModal';
-import { chatApi } from './services/api';
+import LoginGate from './components/LoginGate';
+import { chatApi, authApi } from './services/api';
 
 export default function App() {
   const [conversations, setConversations] = useState([]);
@@ -18,16 +19,19 @@ export default function App() {
   const [uploadModalOpen, setUploadModalOpen] = useState(false);
   const [retrieveModalOpen, setRetrieveModalOpen] = useState(false);
   const [dbStatus, setDbStatus] = useState(null);
+  const [currentUser, setCurrentUser] = useState(() => authApi.getCurrentUser());
 
   const showToast = (message, type = 'info') => {
     setToast({ message, type });
     setTimeout(() => setToast(null), 4000);
   };
 
-  // Load conversation history and DB status on mount
+  // Load conversation history and DB status on mount or user login
   useEffect(() => {
-    loadHistory();
-    fetchDbStatus();
+    if (currentUser) {
+      loadHistory();
+      fetchDbStatus();
+    }
     // Default attach sample optical image so user can immediately test without finding a GeoTIFF
     setAttachedImages([
       {
@@ -38,7 +42,16 @@ export default function App() {
         bands: 3
       }
     ]);
-  }, []);
+  }, [currentUser]);
+
+  const handleLogout = () => {
+    authApi.logout();
+    setCurrentUser(null);
+    setConversations([]);
+    setMessages([]);
+    setActiveSessionId('');
+    showToast('Signed out of private workspace.', 'info');
+  };
 
   const fetchDbStatus = async () => {
     try {
@@ -198,13 +211,26 @@ export default function App() {
     ));
   };
 
+  if (!currentUser) {
+    return (
+      <LoginGate
+        onLoginSuccess={(user) => {
+          setCurrentUser(user);
+          showToast(`Welcome back, ${user.full_name || user.email}!`, 'success');
+        }}
+      />
+    );
+  }
+
   return (
     <div className="app-container">
-      {/* Left Sidebar */}
+      {/* Left Sidebar with strictly isolated private sessions & profile */}
       <Sidebar
         conversations={conversations}
         activeSessionId={activeSessionId}
         dbStatus={dbStatus}
+        currentUser={currentUser}
+        onLogout={handleLogout}
         onNewChat={startNewChat}
         onSelectSession={selectSession}
         onDeleteSession={deleteSession}
