@@ -1,0 +1,97 @@
+{
+  "9e264bf2-4cf4-407e-87e4-0e9db73e193a": {
+    "session_id": "9e264bf2-4cf4-407e-87e4-0e9db73e193a",
+    "title": "New Satellite Analysis",
+    "created_at": "2026-09-11T17:45:35.591608+00:00",
+    "updated_at": "2026-09-11T17:45:35.591608+00:00",
+    "selected_model": "RS-MultiModal-Pipeline",
+    "image_references": [],
+    "messages": []
+  },
+  "5ed18b77-d6e7-4c35-9c24-82377bf788be": {
+    "session_id": "5ed18b77-d6e7-4c35-9c24-82377bf788be",
+    "title": "New Satellite Analysis",
+    "created_at": "2026-09-11T17:45:39.186626+00:00",
+    "updated_at": "2026-09-11T17:48:01.017687+00:00",
+    "selected_model": "RS-MultiModal-Pipeline",
+    "image_references": [],
+    "messages": [
+      {
+        "session_id": "5ed18b77-d6e7-4c35-9c24-82377bf788be",
+        "role": "user",
+        "message": "Assess land cover",
+        "query": "Assess land cover",
+        "image_ids": [
+          "stac_S2B_T42QZF_20260908T055010_L2A.tif"
+        ],
+        "image_references": [
+          "stac_S2B_T42QZF_20260908T055010_L2A.tif"
+        ],
+        "timestamp": "2026-09-11T17:48:01.015904+00:00"
+      },
+      {
+        "session_id": "5ed18b77-d6e7-4c35-9c24-82377bf788be",
+        "role": "assistant",
+        "message": "Here is how the land is divided: the biggest part is water bodies (like lakes or rivers) at 43.3%, followed by open fields or dry ground at 30.4% and buildings and roads at 20.6%.",
+        "query": "Assess land cover",
+        "ai_response": {
+          "summary": "Here is how the land is divided: the biggest part is water bodies (like lakes or rivers) at 43.3%, followed by open fields or dry ground at 30.4% and buildings and roads at 20.6%.",
+          "key_findings": [
+            "Greenery: Scattered patches of plants or trees make up about 5.7% of the area.",
+            "Water: A clearly visible river or lake covers about 43.3% of the area.",
+            "Buildings & Roads: Town areas, roofs, and paved roads make up about 20.6%.",
+            "Open Land: The rest (30.4%) is open ground, empty soil, or grasslands."
+          ],
+          "explanation": "What this means: This picture shows an active landscape with a balanced mix of open ground, natural vegetation, and water. In the visual evidence below, green highlights the plant life, blue shows the water, and red marks the man-made buildings and structures."
+        },
+        "selected_model": "RS-Image-Understanding-Baseline",
+        "model_used": "RS-Image-Understanding-Baseline",
+        "image_ids": [
+          "stac_S2B_T42QZF_20260908T055010_L2A.tif"
+        ],
+        "image_references": [
+          "stac_S2B_T42QZF_20260908T055010_L2A.tif"
+        ],
+        "timestamp": "2026-09-11T17:48:01.015904+00:00",
+        "intent": "image_understanding",
+        "intent_confidence": 0.96,
+        "answer": {
+          "summary": "Here is how the land is divided: the biggest part is water bodies (like lakes or rivers) at 43.3%, followed by open fields or dry ground at 30.4% and buildings and roads at 20.6%.",
+          "key_findings": [
+            "Greenery: Scattered patches of plants or trees make up about 5.7% of the area.",
+            "Water: A clearly visible river or lake covers about 43.3% of the area.",
+            "Buildings & Roads: Town areas, roofs, and paved roads make up about 20.6%.",
+            "Open Land: The rest (30.4%) is open ground, empty soil, or grasslands."
+          ],
+          "explanation": "What this means: This picture shows an active landscape with a balanced mix of open ground, natural vegetation, and water. In the visual evidence below, green highlights the plant life, blue shows the water, and red marks the man-made buildings and structures."
+        },
+        "evidence": {
+          "original_image": "/evidence/stac_S2B_T42QZF_20260908T055010_L2A_preview.png",
+          "overlay_image": "/evidence/stac_S2B_T42QZF_20260908T055010_L2A_understanding_overlay.png",
+          "difference_image": null
+        },
+        "technical_details": {
+          "dimensions": "343 x 343",
+          "bands": 3,
+          "crs": "EPSG:4326 (WGS84)",
+          "processing_time_sec": 0.18,
+          "preprocessing_info": "Full scene spectral extraction and land-cover segmentation on 343 x 343 raster.",
+          "selected_intent": "image_understanding",
+          "intent_confidence": 0.96,
+          "model_selected": "RS-Image-Understanding-Baseline"
+        },
+        "confidence": 0.76,
+        "processing_time": 0.18
+      }
+    ]
+  },
+  "621c694f-96f2-466f-bd14-2aa6205ec52e": {
+    "session_id": "621c694f-96f2-466f-bd14-2aa6205ec52e",
+    "title": "New Satellite Analysis",
+    "created_at": "2026-09-11T17:51:51.476889+00:00",
+    "updated_at": "2026-09-11T17:51:51.476889+00:00",
+    "selected_model": "RS-MultiModal-Pipeline",
+    "image_references": [],
+    "messages": []
+  }
+}

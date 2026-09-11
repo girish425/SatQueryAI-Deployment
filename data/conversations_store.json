@@ -1,0 +1,2074 @@
+{
+  "830d3215-1700-4f4a-941d-6d46a623137c": {
+    "session_id": "830d3215-1700-4f4a-941d-6d46a623137c",
+    "title": "Analyze the optical and SAR images toget...",
+    "created_at": "2026-09-11T14:45:15.638191+00:00",
+    "updated_at": "2026-09-11T14:45:15.638191+00:00",
+    "messages": [
+      {
+        "session_id": "830d3215-1700-4f4a-941d-6d46a623137c",
+        "role": "user",
+        "message": "Analyze the optical and SAR images together.",
+        "image_ids": [
+          "BigEarthNet_S2_patch_01_austria.tif",
+          "BigEarthNet_S1_patch_01_austria.tif"
+        ],
+        "timestamp": "2026-09-11T14:45:15.638191+00:00"
+      },
+      {
+        "session_id": "830d3215-1700-4f4a-941d-6d46a623137c",
+        "role": "assistant",
+        "message": "This analysis compares a standard optical satellite photo with a radar (SAR) satellite capture. Combining both gives a much clearer understanding of land features, moisture, and man-made structures.",
+        "image_ids": [
+          "BigEarthNet_S2_patch_01_austria.tif",
+          "BigEarthNet_S1_patch_01_austria.tif"
+        ],
+        "timestamp": "2026-09-11T14:45:15.638191+00:00",
+        "intent": "optical_sar",
+        "intent_confidence": 0.96,
+        "model_used": "RS-Optical-SAR-Fusion-Baseline",
+        "answer": {
+          "summary": "This analysis compares a standard optical satellite photo with a radar (SAR) satellite capture. Combining both gives a much clearer understanding of land features, moisture, and man-made structures.",
+          "key_findings": [
+            "Buildings & Hard Surfaces: Reflect radar strongly and appear very bright in the radar view (covers about 52.7% of the scene).",
+            "Water & Flat Surfaces: Absorb or deflect radar waves and appear dark (covers about 9.4% of the area).",
+            "Trees & Forest Foliage: Scatter the radar signals in all directions with medium texture (covers about 37.9%).",
+            "Cloud Penetration: Radar passes right through clouds and haze, capturing the ground even in poor weather."
+          ],
+          "explanation": "What this means: Standard satellite cameras take photos using sunlight, but can be blocked by weather and clouds. Radar satellites send down radio waves that pierce through clouds to measure surface texture, moisture, and buildings. In the side-by-side comparison below, you can see how optical colors compare directly with radar reflections."
+        },
+        "evidence": {
+          "original_image": "/evidence/BigEarthNet_S2_patch_01_austria_preview.png",
+          "overlay_image": "/evidence/BigEarthNet_S1_patch_01_austria_preview.png",
+          "difference_image": "/evidence/fusion_BigEarthNet_S2_patch_01_austria_BigEarthNet_S1_patch_01_austria.png"
+        },
+        "technical_details": {
+          "dimensions": "256 x 256",
+          "bands": 4,
+          "crs": "EPSG:4326 (WGS84)",
+          "processing_time_sec": 0.05,
+          "preprocessing_info": "Log-decibel calibrated SAR amplitude combined with 2%-98% contrast stretched optical reflectance.",
+          "selected_intent": "optical_sar",
+          "intent_confidence": 0.96,
+          "model_selected": "RS-Optical-SAR-Fusion-Baseline"
+        },
+        "confidence": 0.78,
+        "processing_time": 0.05
+      }
+    ]
+  },
+  "48ae1e22-7961-4a55-8d8e-1d2d1ae8db52": {
+    "session_id": "48ae1e22-7961-4a55-8d8e-1d2d1ae8db52",
+    "title": "New Satellite Analysis",
+    "created_at": "2026-09-11T16:06:49.619415+00:00",
+    "updated_at": "2026-09-11T16:06:49.619415+00:00",
+    "messages": []
+  },
+  "d06e04f9-fa4c-41a2-871f-b2338399439c": {
+    "session_id": "d06e04f9-fa4c-41a2-871f-b2338399439c",
+    "title": "New Satellite Analysis",
+    "created_at": "2026-09-11T16:14:32.376494+00:00",
+    "updated_at": "2026-09-11T16:29:55.957342+00:00",
+    "messages": [
+      {
+        "session_id": "d06e04f9-fa4c-41a2-871f-b2338399439c",
+        "role": "user",
+        "message": "What is visible in this image?",
+        "image_ids": [
+          "BigEarthNet_S1_patch_01_austria.tif"
+        ],
+        "timestamp": "2026-09-11T16:29:55.957342+00:00"
+      },
+      {
+        "session_id": "d06e04f9-fa4c-41a2-871f-b2338399439c",
+        "role": "assistant",
+        "message": "In this satellite photo, you can see mostly open fields or dry ground (about 66.7%), along with noticeable areas of buildings and roads (22.3%) and water bodies (like lakes or rivers) (11.0%).",
+        "image_ids": [
+          "BigEarthNet_S1_patch_01_austria.tif"
+        ],
+        "timestamp": "2026-09-11T16:29:55.957342+00:00",
+        "intent": "image_understanding",
+        "intent_confidence": 0.96,
+        "model_used": "RS-Image-Understanding-Baseline",
+        "answer": {
+          "summary": "In this satellite photo, you can see mostly open fields or dry ground (about 66.7%), along with noticeable areas of buildings and roads (22.3%) and water bodies (like lakes or rivers) (11.0%).",
+          "key_findings": [
+            "Water: A clearly visible river or lake covers about 11.0% of the area.",
+            "Buildings & Roads: Town areas, roofs, and paved roads make up about 22.3%.",
+            "Open Land: The rest (66.7%) is open ground, empty soil, or grasslands."
+          ],
+          "explanation": "What this means: This picture shows an active landscape with a balanced mix of open ground, natural vegetation, and water. In the visual evidence below, green highlights the plant life, blue shows the water, and red marks the man-made buildings and structures."
+        },
+        "evidence": {
+          "original_image": "/evidence/BigEarthNet_S1_patch_01_austria_preview.png",
+          "overlay_image": "/evidence/BigEarthNet_S1_patch_01_austria_understanding_overlay.png",
+          "difference_image": null
+        },
+        "technical_details": {
+          "dimensions": "256 x 256",
+          "bands": 1,
+          "crs": "EPSG:4326 (WGS84)",
+          "processing_time_sec": 0.07,
+          "preprocessing_info": "Full scene spectral extraction and land-cover segmentation on 256 x 256 raster.",
+          "selected_intent": "image_understanding",
+          "intent_confidence": 0.96,
+          "model_selected": "RS-Image-Understanding-Baseline"
+        },
+        "confidence": 0.75,
+        "processing_time": 0.07
+      }
+    ]
+  },
+  "32e42d99-6409-401f-9315-c9013eac73a8": {
+    "session_id": "32e42d99-6409-401f-9315-c9013eac73a8",
+    "title": "New Satellite Analysis",
+    "created_at": "2026-09-11T17:00:10.020779+00:00",
+    "updated_at": "2026-09-11T17:01:02.076682+00:00",
+    "messages": [
+      {
+        "session_id": "32e42d99-6409-401f-9315-c9013eac73a8",
+        "role": "user",
+        "message": "explain what is in the image",
+        "image_ids": [
+          "stac_S2B_T42QZF_20260908T055010_L2A.tif"
+        ],
+        "timestamp": "2026-09-11T17:01:02.073925+00:00"
+      },
+      {
+        "session_id": "32e42d99-6409-401f-9315-c9013eac73a8",
+        "role": "assistant",
+        "message": "This satellite view shows an area made up mainly of water bodies (like lakes or rivers) (43.3%), with open fields or dry ground (30.4%) and buildings and roads (20.6%) also clearly visible.",
+        "image_ids": [
+          "stac_S2B_T42QZF_20260908T055010_L2A.tif"
+        ],
+        "timestamp": "2026-09-11T17:01:02.073925+00:00",
+        "intent": "image_understanding",
+        "intent_confidence": 0.72,
+        "model_used": "RS-Image-Understanding-Baseline",
+        "answer": {
+          "summary": "This satellite view shows an area made up mainly of water bodies (like lakes or rivers) (43.3%), with open fields or dry ground (30.4%) and buildings and roads (20.6%) also clearly visible.",
+          "key_findings": [
+            "Greenery: Scattered patches of plants or trees make up about 5.7% of the area.",
+            "Water: A clearly visible river or lake covers about 43.3% of the area.",
+            "Buildings & Roads: Town areas, roofs, and paved roads make up about 20.6%.",
+            "Open Land: The rest (30.4%) is open ground, empty soil, or grasslands."
+          ],
+          "explanation": "What this means: This picture shows an active landscape with a balanced mix of open ground, natural vegetation, and water. In the visual evidence below, green highlights the plant life, blue shows the water, and red marks the man-made buildings and structures."
+        },
+        "evidence": {
+          "original_image": "/evidence/stac_S2B_T42QZF_20260908T055010_L2A_preview.png",
+          "overlay_image": "/evidence/stac_S2B_T42QZF_20260908T055010_L2A_understanding_overlay.png",
+          "difference_image": null
+        },
+        "technical_details": {
+          "dimensions": "343 x 343",
+          "bands": 3,
+          "crs": "EPSG:4326 (WGS84)",
+          "processing_time_sec": 0.13,
+          "preprocessing_info": "Full scene spectral extraction and land-cover segmentation on 343 x 343 raster.",
+          "selected_intent": "image_understanding",
+          "intent_confidence": 0.72,
+          "model_selected": "RS-Image-Understanding-Baseline"
+        },
+        "confidence": 0.76,
+        "processing_time": 0.13
+      }
+    ]
+  },
+  "10afb4fc-20bb-4159-b5e5-3633c8756b63": {
+    "session_id": "10afb4fc-20bb-4159-b5e5-3633c8756b63",
+    "title": "New Satellite Analysis",
+    "created_at": "2026-09-11T17:03:02.094620+00:00",
+    "updated_at": "2026-09-11T17:05:17.532244+00:00",
+    "messages": [
+      {
+        "session_id": "10afb4fc-20bb-4159-b5e5-3633c8756b63",
+        "role": "user",
+        "message": "Where is the river?",
+        "image_ids": [
+          "sat_eb2ee8d1cc_TCI.tif"
+        ],
+        "timestamp": "2026-09-11T17:05:17.516542+00:00"
+      },
+      {
+        "session_id": "10afb4fc-20bb-4159-b5e5-3633c8756b63",
+        "role": "assistant",
+        "message": "A river/water body was located in this image.",
+        "image_ids": [
+          "sat_eb2ee8d1cc_TCI.tif"
+        ],
+        "timestamp": "2026-09-11T17:05:17.516542+00:00",
+        "intent": "grounding",
+        "intent_confidence": 0.96,
+        "model_used": "RS-Grounding-Baseline",
+        "answer": {
+          "summary": "A river/water body was located in this image.",
+          "key_findings": [
+            "Position: Located towards the middle center side of the image.",
+            "Boundary: Highlighted with a clear glowing box in the visual evidence below.",
+            "Space Occupied: Covers about 70.6% of the total scene area."
+          ],
+          "explanation": "What this means: The assistant identified the location of the river/water body by analyzing distinct shape and color patterns. Check the visual evidence image below to see the exact highlighted area."
+        },
+        "evidence": {
+          "original_image": "/evidence/sat_eb2ee8d1cc_TCI_preview.png",
+          "overlay_image": "/evidence/sat_eb2ee8d1cc_TCI_grounding_overlay.png",
+          "difference_image": null,
+          "bounding_box": [
+            754,
+            742,
+            10584,
+            10569
+          ]
+        },
+        "technical_details": {
+          "dimensions": "10980 x 10980",
+          "bands": 3,
+          "crs": "EPSG:4326 (WGS84)",
+          "processing_time_sec": 61.53,
+          "preprocessing_info": "Candidate spatial region extraction with bounding box regression on 10980 x 10980 grid.",
+          "selected_intent": "grounding",
+          "intent_confidence": 0.96,
+          "model_selected": "RS-Grounding-Baseline"
+        },
+        "confidence": 0.94,
+        "processing_time": 61.53
+      }
+    ]
+  },
+  "3ccc4874-aca7-4004-9f1f-051e704bcb88": {
+    "session_id": "3ccc4874-aca7-4004-9f1f-051e704bcb88",
+    "title": "What is visible in this image?",
+    "created_at": "2026-09-11T17:44:05.428011+00:00",
+    "updated_at": "2026-09-11T17:44:05.428011+00:00",
+    "selected_model": "RS-Image-Understanding-Baseline",
+    "image_references": [
+      "sample_optical_hyderabad.tif"
+    ],
+    "messages": [
+      {
+        "session_id": "3ccc4874-aca7-4004-9f1f-051e704bcb88",
+        "role": "user",
+        "message": "What is visible in this image?",
+        "query": "What is visible in this image?",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T17:44:05.428011+00:00"
+      },
+      {
+        "session_id": "3ccc4874-aca7-4004-9f1f-051e704bcb88",
+        "role": "assistant",
+        "message": "In this satellite photo, you can see mostly open fields or dry ground (about 58.5%), along with noticeable areas of green plants and crops (29.0%) and water bodies (like lakes or rivers) (8.6%).",
+        "query": "What is visible in this image?",
+        "ai_response": {
+          "summary": "In this satellite photo, you can see mostly open fields or dry ground (about 58.5%), along with noticeable areas of green plants and crops (29.0%) and water bodies (like lakes or rivers) (8.6%).",
+          "key_findings": [
+            "Greenery & Farmland: Covers about 29.0% of the area (healthy green vegetation).",
+            "Water: A clearly visible river or lake covers about 8.6% of the area.",
+            "Buildings & Roads: Town areas, roofs, and paved roads make up about 3.9%.",
+            "Open Land: The rest (58.5%) is open ground, empty soil, or grasslands."
+          ],
+          "explanation": "What this means: This picture shows an active landscape with a balanced mix of open ground, natural vegetation, and water. In the visual evidence below, green highlights the plant life, blue shows the water, and red marks the man-made buildings and structures."
+        },
+        "selected_model": "RS-Image-Understanding-Baseline",
+        "model_used": "RS-Image-Understanding-Baseline",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T17:44:05.428011+00:00",
+        "intent": "image_understanding",
+        "intent_confidence": 0.96,
+        "answer": {
+          "summary": "In this satellite photo, you can see mostly open fields or dry ground (about 58.5%), along with noticeable areas of green plants and crops (29.0%) and water bodies (like lakes or rivers) (8.6%).",
+          "key_findings": [
+            "Greenery & Farmland: Covers about 29.0% of the area (healthy green vegetation).",
+            "Water: A clearly visible river or lake covers about 8.6% of the area.",
+            "Buildings & Roads: Town areas, roofs, and paved roads make up about 3.9%.",
+            "Open Land: The rest (58.5%) is open ground, empty soil, or grasslands."
+          ],
+          "explanation": "What this means: This picture shows an active landscape with a balanced mix of open ground, natural vegetation, and water. In the visual evidence below, green highlights the plant life, blue shows the water, and red marks the man-made buildings and structures."
+        },
+        "evidence": {
+          "original_image": "/evidence/sample_optical_hyderabad_preview.png",
+          "overlay_image": "/evidence/sample_optical_hyderabad_understanding_overlay.png",
+          "difference_image": null
+        },
+        "technical_details": {
+          "dimensions": "512 x 512",
+          "bands": 3,
+          "crs": "EPSG:4326 (WGS84)",
+          "processing_time_sec": 0.08,
+          "preprocessing_info": "Full scene spectral extraction and land-cover segmentation on 512 x 512 raster.",
+          "selected_intent": "image_understanding",
+          "intent_confidence": 0.96,
+          "model_selected": "RS-Image-Understanding-Baseline"
+        },
+        "confidence": 0.75,
+        "processing_time": 0.08
+      }
+    ]
+  },
+  "test_variation_session": {
+    "session_id": "test_variation_session",
+    "title": "What is visible in this image?",
+    "created_at": "2026-09-11T17:44:23.721990+00:00",
+    "updated_at": "2026-09-11T18:09:10.819797+00:00",
+    "selected_model": "RS-Image-Understanding-Baseline",
+    "image_references": [
+      "sample_optical_hyderabad.tif"
+    ],
+    "messages": [
+      {
+        "session_id": "test_variation_session",
+        "role": "user",
+        "message": "What is visible in this image?",
+        "query": "What is visible in this image?",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T17:44:23.721990+00:00"
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "assistant",
+        "message": "In this satellite photo, you can see mostly open fields or dry ground (about 58.5%), along with noticeable areas of green plants and crops (29.0%) and water bodies (like lakes or rivers) (8.6%).",
+        "query": "What is visible in this image?",
+        "ai_response": {
+          "summary": "In this satellite photo, you can see mostly open fields or dry ground (about 58.5%), along with noticeable areas of green plants and crops (29.0%) and water bodies (like lakes or rivers) (8.6%).",
+          "key_findings": [
+            "Greenery & Farmland: Covers about 29.0% of the area (healthy green vegetation).",
+            "Water: A clearly visible river or lake covers about 8.6% of the area.",
+            "Buildings & Roads: Town areas, roofs, and paved roads make up about 3.9%.",
+            "Open Land: The rest (58.5%) is open ground, empty soil, or grasslands."
+          ],
+          "explanation": "What this means: This picture shows an active landscape with a balanced mix of open ground, natural vegetation, and water. In the visual evidence below, green highlights the plant life, blue shows the water, and red marks the man-made buildings and structures."
+        },
+        "selected_model": "RS-Image-Understanding-Baseline",
+        "model_used": "RS-Image-Understanding-Baseline",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T17:44:23.721990+00:00",
+        "intent": "image_understanding",
+        "intent_confidence": 0.96,
+        "answer": {
+          "summary": "In this satellite photo, you can see mostly open fields or dry ground (about 58.5%), along with noticeable areas of green plants and crops (29.0%) and water bodies (like lakes or rivers) (8.6%).",
+          "key_findings": [
+            "Greenery & Farmland: Covers about 29.0% of the area (healthy green vegetation).",
+            "Water: A clearly visible river or lake covers about 8.6% of the area.",
+            "Buildings & Roads: Town areas, roofs, and paved roads make up about 3.9%.",
+            "Open Land: The rest (58.5%) is open ground, empty soil, or grasslands."
+          ],
+          "explanation": "What this means: This picture shows an active landscape with a balanced mix of open ground, natural vegetation, and water. In the visual evidence below, green highlights the plant life, blue shows the water, and red marks the man-made buildings and structures."
+        },
+        "evidence": {
+          "original_image": "/evidence/sample_optical_hyderabad_preview.png",
+          "overlay_image": "/evidence/sample_optical_hyderabad_understanding_overlay.png",
+          "difference_image": null
+        },
+        "technical_details": {
+          "dimensions": "512 x 512",
+          "bands": 3,
+          "crs": "EPSG:4326 (WGS84)",
+          "processing_time_sec": 0.07,
+          "preprocessing_info": "Full scene spectral extraction and land-cover segmentation on 512 x 512 raster.",
+          "selected_intent": "image_understanding",
+          "intent_confidence": 0.96,
+          "model_selected": "RS-Image-Understanding-Baseline"
+        },
+        "confidence": 0.75,
+        "processing_time": 0.07
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "user",
+        "message": "Is there water?",
+        "query": "Is there water?",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T17:44:23.768771+00:00"
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "assistant",
+        "message": "Yes, water-like bodies are clearly present in this satellite image.",
+        "query": "Is there water?",
+        "ai_response": {
+          "summary": "Yes, water-like bodies are clearly present in this satellite image.",
+          "key_findings": [
+            "Size: Covers about 8.59% of the total land area.",
+            "Location: Most of it is gathered in the middle-right (east) section.",
+            "Visual Map: The detected areas are marked in bright yellow in the evidence image below."
+          ],
+          "explanation": "What this means: The satellite camera detected distinct color and light patterns that match water. You can see exactly where they are by looking at the yellow areas highlighted in the picture below."
+        },
+        "selected_model": "RS-VQA-Spectral-Baseline",
+        "model_used": "RS-VQA-Spectral-Baseline",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T17:44:23.768771+00:00",
+        "intent": "vqa",
+        "intent_confidence": 0.96,
+        "answer": {
+          "summary": "Yes, water-like bodies are clearly present in this satellite image.",
+          "key_findings": [
+            "Size: Covers about 8.59% of the total land area.",
+            "Location: Most of it is gathered in the middle-right (east) section.",
+            "Visual Map: The detected areas are marked in bright yellow in the evidence image below."
+          ],
+          "explanation": "What this means: The satellite camera detected distinct color and light patterns that match water. You can see exactly where they are by looking at the yellow areas highlighted in the picture below."
+        },
+        "evidence": {
+          "original_image": "/evidence/sample_optical_hyderabad_preview.png",
+          "overlay_image": "/evidence/sample_optical_hyderabad_vqa_overlay.png",
+          "difference_image": null
+        },
+        "technical_details": {
+          "dimensions": "512 x 512",
+          "bands": 3,
+          "crs": "EPSG:4326 (WGS84)",
+          "processing_time_sec": 0.05,
+          "preprocessing_info": "Normalized 3-band raster, evaluated 262144 pixels against water spectral index.",
+          "selected_intent": "vqa",
+          "intent_confidence": 0.96,
+          "model_selected": "RS-VQA-Spectral-Baseline"
+        },
+        "confidence": 0.75,
+        "processing_time": 0.05
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "user",
+        "message": "Are there buildings?",
+        "query": "Are there buildings?",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T17:44:23.842318+00:00"
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "assistant",
+        "message": "Yes, built-up structures and man-made surfaces are clearly present in this satellite image.",
+        "query": "Are there buildings?",
+        "ai_response": {
+          "summary": "Yes, built-up structures and man-made surfaces are clearly present in this satellite image.",
+          "key_findings": [
+            "Size: Covers about 3.89% of the total land area.",
+            "Location: Most of it is gathered in the middle-left (west) section.",
+            "Visual Map: The detected areas are marked in bright yellow in the evidence image below."
+          ],
+          "explanation": "What this means: The satellite camera detected distinct color and light patterns that match buildings. You can see exactly where they are by looking at the yellow areas highlighted in the picture below."
+        },
+        "selected_model": "RS-VQA-Spectral-Baseline",
+        "model_used": "RS-VQA-Spectral-Baseline",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T17:44:23.842318+00:00",
+        "intent": "vqa",
+        "intent_confidence": 0.96,
+        "answer": {
+          "summary": "Yes, built-up structures and man-made surfaces are clearly present in this satellite image.",
+          "key_findings": [
+            "Size: Covers about 3.89% of the total land area.",
+            "Location: Most of it is gathered in the middle-left (west) section.",
+            "Visual Map: The detected areas are marked in bright yellow in the evidence image below."
+          ],
+          "explanation": "What this means: The satellite camera detected distinct color and light patterns that match buildings. You can see exactly where they are by looking at the yellow areas highlighted in the picture below."
+        },
+        "evidence": {
+          "original_image": "/evidence/sample_optical_hyderabad_preview.png",
+          "overlay_image": "/evidence/sample_optical_hyderabad_vqa_overlay.png",
+          "difference_image": null
+        },
+        "technical_details": {
+          "dimensions": "512 x 512",
+          "bands": 3,
+          "crs": "EPSG:4326 (WGS84)",
+          "processing_time_sec": 0.07,
+          "preprocessing_info": "Normalized 3-band raster, evaluated 262144 pixels against buildings spectral index.",
+          "selected_intent": "vqa",
+          "intent_confidence": 0.96,
+          "model_selected": "RS-VQA-Spectral-Baseline"
+        },
+        "confidence": 0.75,
+        "processing_time": 0.07
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "user",
+        "message": "Where is the river?",
+        "query": "Where is the river?",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T17:44:23.995116+00:00"
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "assistant",
+        "message": "A river/water body was located in this image.",
+        "query": "Where is the river?",
+        "ai_response": {
+          "summary": "A river/water body was located in this image.",
+          "key_findings": [
+            "Position: Located towards the middle right side of the image.",
+            "Boundary: Highlighted with a clear glowing box in the visual evidence below.",
+            "Space Occupied: Covers about 8.6% of the total scene area."
+          ],
+          "explanation": "What this means: The assistant identified the location of the river/water body by analyzing distinct shape and color patterns. Check the visual evidence image below to see the exact highlighted area."
+        },
+        "selected_model": "RS-Grounding-Baseline",
+        "model_used": "RS-Grounding-Baseline",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T17:44:23.995116+00:00",
+        "intent": "grounding",
+        "intent_confidence": 0.96,
+        "answer": {
+          "summary": "A river/water body was located in this image.",
+          "key_findings": [
+            "Position: Located towards the middle right side of the image.",
+            "Boundary: Highlighted with a clear glowing box in the visual evidence below.",
+            "Space Occupied: Covers about 8.6% of the total scene area."
+          ],
+          "explanation": "What this means: The assistant identified the location of the river/water body by analyzing distinct shape and color patterns. Check the visual evidence image below to see the exact highlighted area."
+        },
+        "evidence": {
+          "original_image": "/evidence/sample_optical_hyderabad_preview.png",
+          "overlay_image": "/evidence/sample_optical_hyderabad_grounding_overlay.png",
+          "difference_image": null,
+          "bounding_box": [
+            312,
+            25,
+            438,
+            486
+          ]
+        },
+        "technical_details": {
+          "dimensions": "512 x 512",
+          "bands": 3,
+          "crs": "EPSG:4326 (WGS84)",
+          "processing_time_sec": 0.12,
+          "preprocessing_info": "Candidate spatial region extraction with bounding box regression on 512 x 512 grid.",
+          "selected_intent": "grounding",
+          "intent_confidence": 0.96,
+          "model_selected": "RS-Grounding-Baseline"
+        },
+        "confidence": 0.86,
+        "processing_time": 0.12
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "user",
+        "message": "Describe the image.",
+        "query": "Describe the image.",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T17:44:24.074810+00:00"
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "assistant",
+        "message": "This image shows a broad view of the landscape. Most of the territory is open fields or dry ground, with clear sections of green plants and crops and water bodies (like lakes or rivers) across the view.",
+        "query": "Describe the image.",
+        "ai_response": {
+          "summary": "This image shows a broad view of the landscape. Most of the territory is open fields or dry ground, with clear sections of green plants and crops and water bodies (like lakes or rivers) across the view.",
+          "key_findings": [
+            "Greenery & Farmland: Covers about 29.0% of the area (healthy green vegetation).",
+            "Water: A clearly visible river or lake covers about 8.6% of the area.",
+            "Buildings & Roads: Town areas, roofs, and paved roads make up about 3.9%.",
+            "Open Land: The rest (58.5%) is open ground, empty soil, or grasslands."
+          ],
+          "explanation": "What this means: This picture shows an active landscape with a balanced mix of open ground, natural vegetation, and water. In the visual evidence below, green highlights the plant life, blue shows the water, and red marks the man-made buildings and structures."
+        },
+        "selected_model": "RS-Image-Understanding-Baseline",
+        "model_used": "RS-Image-Understanding-Baseline",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T17:44:24.074810+00:00",
+        "intent": "image_understanding",
+        "intent_confidence": 0.96,
+        "answer": {
+          "summary": "This image shows a broad view of the landscape. Most of the territory is open fields or dry ground, with clear sections of green plants and crops and water bodies (like lakes or rivers) across the view.",
+          "key_findings": [
+            "Greenery & Farmland: Covers about 29.0% of the area (healthy green vegetation).",
+            "Water: A clearly visible river or lake covers about 8.6% of the area.",
+            "Buildings & Roads: Town areas, roofs, and paved roads make up about 3.9%.",
+            "Open Land: The rest (58.5%) is open ground, empty soil, or grasslands."
+          ],
+          "explanation": "What this means: This picture shows an active landscape with a balanced mix of open ground, natural vegetation, and water. In the visual evidence below, green highlights the plant life, blue shows the water, and red marks the man-made buildings and structures."
+        },
+        "evidence": {
+          "original_image": "/evidence/sample_optical_hyderabad_preview.png",
+          "overlay_image": "/evidence/sample_optical_hyderabad_understanding_overlay.png",
+          "difference_image": null
+        },
+        "technical_details": {
+          "dimensions": "512 x 512",
+          "bands": 3,
+          "crs": "EPSG:4326 (WGS84)",
+          "processing_time_sec": 0.08,
+          "preprocessing_info": "Full scene spectral extraction and land-cover segmentation on 512 x 512 raster.",
+          "selected_intent": "image_understanding",
+          "intent_confidence": 0.96,
+          "model_selected": "RS-Image-Understanding-Baseline"
+        },
+        "confidence": 0.75,
+        "processing_time": 0.08
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "user",
+        "message": "What is visible in this image?",
+        "query": "What is visible in this image?",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T17:45:08.963161+00:00"
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "assistant",
+        "message": "In this satellite photo, you can see mostly open fields or dry ground (about 58.5%), along with noticeable areas of green plants and crops (29.0%) and water bodies (like lakes or rivers) (8.6%).",
+        "query": "What is visible in this image?",
+        "ai_response": {
+          "summary": "In this satellite photo, you can see mostly open fields or dry ground (about 58.5%), along with noticeable areas of green plants and crops (29.0%) and water bodies (like lakes or rivers) (8.6%).",
+          "key_findings": [
+            "Greenery & Farmland: Covers about 29.0% of the area (healthy green vegetation).",
+            "Water: A clearly visible river or lake covers about 8.6% of the area.",
+            "Buildings & Roads: Town areas, roofs, and paved roads make up about 3.9%.",
+            "Open Land: The rest (58.5%) is open ground, empty soil, or grasslands."
+          ],
+          "explanation": "What this means: This picture shows an active landscape with a balanced mix of open ground, natural vegetation, and water. In the visual evidence below, green highlights the plant life, blue shows the water, and red marks the man-made buildings and structures."
+        },
+        "selected_model": "RS-Image-Understanding-Baseline",
+        "model_used": "RS-Image-Understanding-Baseline",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T17:45:08.963161+00:00",
+        "intent": "image_understanding",
+        "intent_confidence": 0.96,
+        "answer": {
+          "summary": "In this satellite photo, you can see mostly open fields or dry ground (about 58.5%), along with noticeable areas of green plants and crops (29.0%) and water bodies (like lakes or rivers) (8.6%).",
+          "key_findings": [
+            "Greenery & Farmland: Covers about 29.0% of the area (healthy green vegetation).",
+            "Water: A clearly visible river or lake covers about 8.6% of the area.",
+            "Buildings & Roads: Town areas, roofs, and paved roads make up about 3.9%.",
+            "Open Land: The rest (58.5%) is open ground, empty soil, or grasslands."
+          ],
+          "explanation": "What this means: This picture shows an active landscape with a balanced mix of open ground, natural vegetation, and water. In the visual evidence below, green highlights the plant life, blue shows the water, and red marks the man-made buildings and structures."
+        },
+        "evidence": {
+          "original_image": "/evidence/sample_optical_hyderabad_preview.png",
+          "overlay_image": "/evidence/sample_optical_hyderabad_understanding_overlay.png",
+          "difference_image": null
+        },
+        "technical_details": {
+          "dimensions": "512 x 512",
+          "bands": 3,
+          "crs": "EPSG:4326 (WGS84)",
+          "processing_time_sec": 0.07,
+          "preprocessing_info": "Full scene spectral extraction and land-cover segmentation on 512 x 512 raster.",
+          "selected_intent": "image_understanding",
+          "intent_confidence": 0.96,
+          "model_selected": "RS-Image-Understanding-Baseline"
+        },
+        "confidence": 0.75,
+        "processing_time": 0.07
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "user",
+        "message": "Is there water?",
+        "query": "Is there water?",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T17:45:09.020088+00:00"
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "assistant",
+        "message": "Yes, water-like bodies are clearly present in this satellite image.",
+        "query": "Is there water?",
+        "ai_response": {
+          "summary": "Yes, water-like bodies are clearly present in this satellite image.",
+          "key_findings": [
+            "Size: Covers about 8.59% of the total land area.",
+            "Location: Most of it is gathered in the middle-right (east) section.",
+            "Visual Map: The detected areas are marked in bright yellow in the evidence image below."
+          ],
+          "explanation": "What this means: The satellite camera detected distinct color and light patterns that match water. You can see exactly where they are by looking at the yellow areas highlighted in the picture below."
+        },
+        "selected_model": "RS-VQA-Spectral-Baseline",
+        "model_used": "RS-VQA-Spectral-Baseline",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T17:45:09.020088+00:00",
+        "intent": "vqa",
+        "intent_confidence": 0.96,
+        "answer": {
+          "summary": "Yes, water-like bodies are clearly present in this satellite image.",
+          "key_findings": [
+            "Size: Covers about 8.59% of the total land area.",
+            "Location: Most of it is gathered in the middle-right (east) section.",
+            "Visual Map: The detected areas are marked in bright yellow in the evidence image below."
+          ],
+          "explanation": "What this means: The satellite camera detected distinct color and light patterns that match water. You can see exactly where they are by looking at the yellow areas highlighted in the picture below."
+        },
+        "evidence": {
+          "original_image": "/evidence/sample_optical_hyderabad_preview.png",
+          "overlay_image": "/evidence/sample_optical_hyderabad_vqa_overlay.png",
+          "difference_image": null
+        },
+        "technical_details": {
+          "dimensions": "512 x 512",
+          "bands": 3,
+          "crs": "EPSG:4326 (WGS84)",
+          "processing_time_sec": 0.06,
+          "preprocessing_info": "Normalized 3-band raster, evaluated 262144 pixels against water spectral index.",
+          "selected_intent": "vqa",
+          "intent_confidence": 0.96,
+          "model_selected": "RS-VQA-Spectral-Baseline"
+        },
+        "confidence": 0.75,
+        "processing_time": 0.06
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "user",
+        "message": "Are there buildings?",
+        "query": "Are there buildings?",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T17:45:09.078527+00:00"
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "assistant",
+        "message": "Yes, built-up structures and man-made surfaces are clearly present in this satellite image.",
+        "query": "Are there buildings?",
+        "ai_response": {
+          "summary": "Yes, built-up structures and man-made surfaces are clearly present in this satellite image.",
+          "key_findings": [
+            "Size: Covers about 3.89% of the total land area.",
+            "Location: Most of it is gathered in the middle-left (west) section.",
+            "Visual Map: The detected areas are marked in bright yellow in the evidence image below."
+          ],
+          "explanation": "What this means: The satellite camera detected distinct color and light patterns that match buildings. You can see exactly where they are by looking at the yellow areas highlighted in the picture below."
+        },
+        "selected_model": "RS-VQA-Spectral-Baseline",
+        "model_used": "RS-VQA-Spectral-Baseline",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T17:45:09.078527+00:00",
+        "intent": "vqa",
+        "intent_confidence": 0.96,
+        "answer": {
+          "summary": "Yes, built-up structures and man-made surfaces are clearly present in this satellite image.",
+          "key_findings": [
+            "Size: Covers about 3.89% of the total land area.",
+            "Location: Most of it is gathered in the middle-left (west) section.",
+            "Visual Map: The detected areas are marked in bright yellow in the evidence image below."
+          ],
+          "explanation": "What this means: The satellite camera detected distinct color and light patterns that match buildings. You can see exactly where they are by looking at the yellow areas highlighted in the picture below."
+        },
+        "evidence": {
+          "original_image": "/evidence/sample_optical_hyderabad_preview.png",
+          "overlay_image": "/evidence/sample_optical_hyderabad_vqa_overlay.png",
+          "difference_image": null
+        },
+        "technical_details": {
+          "dimensions": "512 x 512",
+          "bands": 3,
+          "crs": "EPSG:4326 (WGS84)",
+          "processing_time_sec": 0.06,
+          "preprocessing_info": "Normalized 3-band raster, evaluated 262144 pixels against buildings spectral index.",
+          "selected_intent": "vqa",
+          "intent_confidence": 0.96,
+          "model_selected": "RS-VQA-Spectral-Baseline"
+        },
+        "confidence": 0.75,
+        "processing_time": 0.06
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "user",
+        "message": "Where is the river?",
+        "query": "Where is the river?",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T17:45:09.136160+00:00"
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "assistant",
+        "message": "A river/water body was located in this image.",
+        "query": "Where is the river?",
+        "ai_response": {
+          "summary": "A river/water body was located in this image.",
+          "key_findings": [
+            "Position: Located towards the middle right side of the image.",
+            "Boundary: Highlighted with a clear glowing box in the visual evidence below.",
+            "Space Occupied: Covers about 8.6% of the total scene area."
+          ],
+          "explanation": "What this means: The assistant identified the location of the river/water body by analyzing distinct shape and color patterns. Check the visual evidence image below to see the exact highlighted area."
+        },
+        "selected_model": "RS-Grounding-Baseline",
+        "model_used": "RS-Grounding-Baseline",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T17:45:09.136160+00:00",
+        "intent": "grounding",
+        "intent_confidence": 0.96,
+        "answer": {
+          "summary": "A river/water body was located in this image.",
+          "key_findings": [
+            "Position: Located towards the middle right side of the image.",
+            "Boundary: Highlighted with a clear glowing box in the visual evidence below.",
+            "Space Occupied: Covers about 8.6% of the total scene area."
+          ],
+          "explanation": "What this means: The assistant identified the location of the river/water body by analyzing distinct shape and color patterns. Check the visual evidence image below to see the exact highlighted area."
+        },
+        "evidence": {
+          "original_image": "/evidence/sample_optical_hyderabad_preview.png",
+          "overlay_image": "/evidence/sample_optical_hyderabad_grounding_overlay.png",
+          "difference_image": null,
+          "bounding_box": [
+            312,
+            25,
+            438,
+            486
+          ]
+        },
+        "technical_details": {
+          "dimensions": "512 x 512",
+          "bands": 3,
+          "crs": "EPSG:4326 (WGS84)",
+          "processing_time_sec": 0.05,
+          "preprocessing_info": "Candidate spatial region extraction with bounding box regression on 512 x 512 grid.",
+          "selected_intent": "grounding",
+          "intent_confidence": 0.96,
+          "model_selected": "RS-Grounding-Baseline"
+        },
+        "confidence": 0.86,
+        "processing_time": 0.05
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "user",
+        "message": "Describe the image.",
+        "query": "Describe the image.",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T17:45:09.217117+00:00"
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "assistant",
+        "message": "This image shows a broad view of the landscape. Most of the territory is open fields or dry ground, with clear sections of green plants and crops and water bodies (like lakes or rivers) across the view.",
+        "query": "Describe the image.",
+        "ai_response": {
+          "summary": "This image shows a broad view of the landscape. Most of the territory is open fields or dry ground, with clear sections of green plants and crops and water bodies (like lakes or rivers) across the view.",
+          "key_findings": [
+            "Greenery & Farmland: Covers about 29.0% of the area (healthy green vegetation).",
+            "Water: A clearly visible river or lake covers about 8.6% of the area.",
+            "Buildings & Roads: Town areas, roofs, and paved roads make up about 3.9%.",
+            "Open Land: The rest (58.5%) is open ground, empty soil, or grasslands."
+          ],
+          "explanation": "What this means: This picture shows an active landscape with a balanced mix of open ground, natural vegetation, and water. In the visual evidence below, green highlights the plant life, blue shows the water, and red marks the man-made buildings and structures."
+        },
+        "selected_model": "RS-Image-Understanding-Baseline",
+        "model_used": "RS-Image-Understanding-Baseline",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T17:45:09.217117+00:00",
+        "intent": "image_understanding",
+        "intent_confidence": 0.96,
+        "answer": {
+          "summary": "This image shows a broad view of the landscape. Most of the territory is open fields or dry ground, with clear sections of green plants and crops and water bodies (like lakes or rivers) across the view.",
+          "key_findings": [
+            "Greenery & Farmland: Covers about 29.0% of the area (healthy green vegetation).",
+            "Water: A clearly visible river or lake covers about 8.6% of the area.",
+            "Buildings & Roads: Town areas, roofs, and paved roads make up about 3.9%.",
+            "Open Land: The rest (58.5%) is open ground, empty soil, or grasslands."
+          ],
+          "explanation": "What this means: This picture shows an active landscape with a balanced mix of open ground, natural vegetation, and water. In the visual evidence below, green highlights the plant life, blue shows the water, and red marks the man-made buildings and structures."
+        },
+        "evidence": {
+          "original_image": "/evidence/sample_optical_hyderabad_preview.png",
+          "overlay_image": "/evidence/sample_optical_hyderabad_understanding_overlay.png",
+          "difference_image": null
+        },
+        "technical_details": {
+          "dimensions": "512 x 512",
+          "bands": 3,
+          "crs": "EPSG:4326 (WGS84)",
+          "processing_time_sec": 0.08,
+          "preprocessing_info": "Full scene spectral extraction and land-cover segmentation on 512 x 512 raster.",
+          "selected_intent": "image_understanding",
+          "intent_confidence": 0.96,
+          "model_selected": "RS-Image-Understanding-Baseline"
+        },
+        "confidence": 0.75,
+        "processing_time": 0.08
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "user",
+        "message": "What is visible in this image?",
+        "query": "What is visible in this image?",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T18:08:30.976923+00:00"
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "assistant",
+        "message": "In this satellite photo, you can see mostly open fields or dry ground (about 58.5%), along with noticeable areas of green plants and crops (29.0%) and water bodies (like lakes or rivers) (8.6%).",
+        "query": "What is visible in this image?",
+        "ai_response": {
+          "summary": "In this satellite photo, you can see mostly open fields or dry ground (about 58.5%), along with noticeable areas of green plants and crops (29.0%) and water bodies (like lakes or rivers) (8.6%).",
+          "key_findings": [
+            "Greenery & Farmland: Covers about 29.0% of the area (healthy green vegetation).",
+            "Water: A clearly visible river or lake covers about 8.6% of the area.",
+            "Buildings & Roads: Town areas, roofs, and paved roads make up about 3.9%.",
+            "Open Land: The rest (58.5%) is open ground, empty soil, or grasslands."
+          ],
+          "explanation": "What this means: This picture shows an active landscape with a balanced mix of open ground, natural vegetation, and water. In the visual evidence below, green highlights the plant life, blue shows the water, and red marks the man-made buildings and structures."
+        },
+        "selected_model": "RS-Image-Understanding-Baseline",
+        "model_used": "RS-Image-Understanding-Baseline",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T18:08:30.976923+00:00",
+        "intent": "image_understanding",
+        "intent_confidence": 0.96,
+        "answer": {
+          "summary": "In this satellite photo, you can see mostly open fields or dry ground (about 58.5%), along with noticeable areas of green plants and crops (29.0%) and water bodies (like lakes or rivers) (8.6%).",
+          "key_findings": [
+            "Greenery & Farmland: Covers about 29.0% of the area (healthy green vegetation).",
+            "Water: A clearly visible river or lake covers about 8.6% of the area.",
+            "Buildings & Roads: Town areas, roofs, and paved roads make up about 3.9%.",
+            "Open Land: The rest (58.5%) is open ground, empty soil, or grasslands."
+          ],
+          "explanation": "What this means: This picture shows an active landscape with a balanced mix of open ground, natural vegetation, and water. In the visual evidence below, green highlights the plant life, blue shows the water, and red marks the man-made buildings and structures."
+        },
+        "evidence": {
+          "original_image": "/evidence/sample_optical_hyderabad_preview.png",
+          "overlay_image": "/evidence/sample_optical_hyderabad_understanding_overlay.png",
+          "difference_image": null
+        },
+        "technical_details": {
+          "dimensions": "512 x 512",
+          "bands": 3,
+          "crs": "EPSG:4326 (WGS84)",
+          "processing_time_sec": 0.07,
+          "preprocessing_info": "Full scene spectral extraction and land-cover segmentation on 512 x 512 raster.",
+          "selected_intent": "image_understanding",
+          "intent_confidence": 0.96,
+          "model_selected": "RS-Image-Understanding-Baseline"
+        },
+        "confidence": 0.75,
+        "processing_time": 0.07
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "user",
+        "message": "Is there water?",
+        "query": "Is there water?",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T18:08:31.479911+00:00"
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "assistant",
+        "message": "Yes, water-like bodies are clearly present in this satellite image.",
+        "query": "Is there water?",
+        "ai_response": {
+          "summary": "Yes, water-like bodies are clearly present in this satellite image.",
+          "key_findings": [
+            "Size: Covers about 8.59% of the total land area.",
+            "Location: Most of it is gathered in the middle-right (east) section.",
+            "Visual Map: The detected areas are marked in bright yellow in the evidence image below."
+          ],
+          "explanation": "What this means: The satellite camera detected distinct color and light patterns that match water. You can see exactly where they are by looking at the yellow areas highlighted in the picture below."
+        },
+        "selected_model": "RS-VQA-Spectral-Baseline",
+        "model_used": "RS-VQA-Spectral-Baseline",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T18:08:31.479911+00:00",
+        "intent": "vqa",
+        "intent_confidence": 0.96,
+        "answer": {
+          "summary": "Yes, water-like bodies are clearly present in this satellite image.",
+          "key_findings": [
+            "Size: Covers about 8.59% of the total land area.",
+            "Location: Most of it is gathered in the middle-right (east) section.",
+            "Visual Map: The detected areas are marked in bright yellow in the evidence image below."
+          ],
+          "explanation": "What this means: The satellite camera detected distinct color and light patterns that match water. You can see exactly where they are by looking at the yellow areas highlighted in the picture below."
+        },
+        "evidence": {
+          "original_image": "/evidence/sample_optical_hyderabad_preview.png",
+          "overlay_image": "/evidence/sample_optical_hyderabad_vqa_overlay.png",
+          "difference_image": null
+        },
+        "technical_details": {
+          "dimensions": "512 x 512",
+          "bands": 3,
+          "crs": "EPSG:4326 (WGS84)",
+          "processing_time_sec": 0.08,
+          "preprocessing_info": "Normalized 3-band raster, evaluated 262144 pixels against water spectral index.",
+          "selected_intent": "vqa",
+          "intent_confidence": 0.96,
+          "model_selected": "RS-VQA-Spectral-Baseline"
+        },
+        "confidence": 0.75,
+        "processing_time": 0.08
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "user",
+        "message": "Are there buildings?",
+        "query": "Are there buildings?",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T18:08:31.764350+00:00"
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "assistant",
+        "message": "Yes, built-up structures and man-made surfaces are clearly present in this satellite image.",
+        "query": "Are there buildings?",
+        "ai_response": {
+          "summary": "Yes, built-up structures and man-made surfaces are clearly present in this satellite image.",
+          "key_findings": [
+            "Size: Covers about 3.89% of the total land area.",
+            "Location: Most of it is gathered in the middle-left (west) section.",
+            "Visual Map: The detected areas are marked in bright yellow in the evidence image below."
+          ],
+          "explanation": "What this means: The satellite camera detected distinct color and light patterns that match buildings. You can see exactly where they are by looking at the yellow areas highlighted in the picture below."
+        },
+        "selected_model": "RS-VQA-Spectral-Baseline",
+        "model_used": "RS-VQA-Spectral-Baseline",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T18:08:31.764350+00:00",
+        "intent": "vqa",
+        "intent_confidence": 0.96,
+        "answer": {
+          "summary": "Yes, built-up structures and man-made surfaces are clearly present in this satellite image.",
+          "key_findings": [
+            "Size: Covers about 3.89% of the total land area.",
+            "Location: Most of it is gathered in the middle-left (west) section.",
+            "Visual Map: The detected areas are marked in bright yellow in the evidence image below."
+          ],
+          "explanation": "What this means: The satellite camera detected distinct color and light patterns that match buildings. You can see exactly where they are by looking at the yellow areas highlighted in the picture below."
+        },
+        "evidence": {
+          "original_image": "/evidence/sample_optical_hyderabad_preview.png",
+          "overlay_image": "/evidence/sample_optical_hyderabad_vqa_overlay.png",
+          "difference_image": null
+        },
+        "technical_details": {
+          "dimensions": "512 x 512",
+          "bands": 3,
+          "crs": "EPSG:4326 (WGS84)",
+          "processing_time_sec": 0.08,
+          "preprocessing_info": "Normalized 3-band raster, evaluated 262144 pixels against buildings spectral index.",
+          "selected_intent": "vqa",
+          "intent_confidence": 0.96,
+          "model_selected": "RS-VQA-Spectral-Baseline"
+        },
+        "confidence": 0.75,
+        "processing_time": 0.08
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "user",
+        "message": "Where is the river?",
+        "query": "Where is the river?",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T18:08:32.370079+00:00"
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "assistant",
+        "message": "A river/water body was located in this image.",
+        "query": "Where is the river?",
+        "ai_response": {
+          "summary": "A river/water body was located in this image.",
+          "key_findings": [
+            "Position: Located towards the middle right side of the image.",
+            "Boundary: Highlighted with a clear glowing box in the visual evidence below.",
+            "Space Occupied: Covers about 8.6% of the total scene area."
+          ],
+          "explanation": "What this means: The assistant identified the location of the river/water body by analyzing distinct shape and color patterns. Check the visual evidence image below to see the exact highlighted area."
+        },
+        "selected_model": "RS-Grounding-Baseline",
+        "model_used": "RS-Grounding-Baseline",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T18:08:32.370079+00:00",
+        "intent": "grounding",
+        "intent_confidence": 0.96,
+        "answer": {
+          "summary": "A river/water body was located in this image.",
+          "key_findings": [
+            "Position: Located towards the middle right side of the image.",
+            "Boundary: Highlighted with a clear glowing box in the visual evidence below.",
+            "Space Occupied: Covers about 8.6% of the total scene area."
+          ],
+          "explanation": "What this means: The assistant identified the location of the river/water body by analyzing distinct shape and color patterns. Check the visual evidence image below to see the exact highlighted area."
+        },
+        "evidence": {
+          "original_image": "/evidence/sample_optical_hyderabad_preview.png",
+          "overlay_image": "/evidence/sample_optical_hyderabad_grounding_overlay.png",
+          "difference_image": null,
+          "bounding_box": [
+            312,
+            25,
+            438,
+            486
+          ]
+        },
+        "technical_details": {
+          "dimensions": "512 x 512",
+          "bands": 3,
+          "crs": "EPSG:4326 (WGS84)",
+          "processing_time_sec": 0.13,
+          "preprocessing_info": "Candidate spatial region extraction with bounding box regression on 512 x 512 grid.",
+          "selected_intent": "grounding",
+          "intent_confidence": 0.96,
+          "model_selected": "RS-Grounding-Baseline"
+        },
+        "confidence": 0.86,
+        "processing_time": 0.13
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "user",
+        "message": "Describe the image.",
+        "query": "Describe the image.",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T18:08:32.793488+00:00"
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "assistant",
+        "message": "This image shows a broad view of the landscape. Most of the territory is open fields or dry ground, with clear sections of green plants and crops and water bodies (like lakes or rivers) across the view.",
+        "query": "Describe the image.",
+        "ai_response": {
+          "summary": "This image shows a broad view of the landscape. Most of the territory is open fields or dry ground, with clear sections of green plants and crops and water bodies (like lakes or rivers) across the view.",
+          "key_findings": [
+            "Greenery & Farmland: Covers about 29.0% of the area (healthy green vegetation).",
+            "Water: A clearly visible river or lake covers about 8.6% of the area.",
+            "Buildings & Roads: Town areas, roofs, and paved roads make up about 3.9%.",
+            "Open Land: The rest (58.5%) is open ground, empty soil, or grasslands."
+          ],
+          "explanation": "What this means: This picture shows an active landscape with a balanced mix of open ground, natural vegetation, and water. In the visual evidence below, green highlights the plant life, blue shows the water, and red marks the man-made buildings and structures."
+        },
+        "selected_model": "RS-Image-Understanding-Baseline",
+        "model_used": "RS-Image-Understanding-Baseline",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T18:08:32.793488+00:00",
+        "intent": "image_understanding",
+        "intent_confidence": 0.96,
+        "answer": {
+          "summary": "This image shows a broad view of the landscape. Most of the territory is open fields or dry ground, with clear sections of green plants and crops and water bodies (like lakes or rivers) across the view.",
+          "key_findings": [
+            "Greenery & Farmland: Covers about 29.0% of the area (healthy green vegetation).",
+            "Water: A clearly visible river or lake covers about 8.6% of the area.",
+            "Buildings & Roads: Town areas, roofs, and paved roads make up about 3.9%.",
+            "Open Land: The rest (58.5%) is open ground, empty soil, or grasslands."
+          ],
+          "explanation": "What this means: This picture shows an active landscape with a balanced mix of open ground, natural vegetation, and water. In the visual evidence below, green highlights the plant life, blue shows the water, and red marks the man-made buildings and structures."
+        },
+        "evidence": {
+          "original_image": "/evidence/sample_optical_hyderabad_preview.png",
+          "overlay_image": "/evidence/sample_optical_hyderabad_understanding_overlay.png",
+          "difference_image": null
+        },
+        "technical_details": {
+          "dimensions": "512 x 512",
+          "bands": 3,
+          "crs": "EPSG:4326 (WGS84)",
+          "processing_time_sec": 0.07,
+          "preprocessing_info": "Full scene spectral extraction and land-cover segmentation on 512 x 512 raster.",
+          "selected_intent": "image_understanding",
+          "intent_confidence": 0.96,
+          "model_selected": "RS-Image-Understanding-Baseline"
+        },
+        "confidence": 0.75,
+        "processing_time": 0.07
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "user",
+        "message": "What is visible in this image?",
+        "query": "What is visible in this image?",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T18:09:09.847952+00:00"
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "assistant",
+        "message": "In this satellite photo, you can see mostly open fields or dry ground (about 58.5%), along with noticeable areas of green plants and crops (29.0%) and water bodies (like lakes or rivers) (8.6%).",
+        "query": "What is visible in this image?",
+        "ai_response": {
+          "summary": "In this satellite photo, you can see mostly open fields or dry ground (about 58.5%), along with noticeable areas of green plants and crops (29.0%) and water bodies (like lakes or rivers) (8.6%).",
+          "key_findings": [
+            "Greenery & Farmland: Covers about 29.0% of the area (healthy green vegetation).",
+            "Water: A clearly visible river or lake covers about 8.6% of the area.",
+            "Buildings & Roads: Town areas, roofs, and paved roads make up about 3.9%.",
+            "Open Land: The rest (58.5%) is open ground, empty soil, or grasslands."
+          ],
+          "explanation": "What this means: This picture shows an active landscape with a balanced mix of open ground, natural vegetation, and water. In the visual evidence below, green highlights the plant life, blue shows the water, and red marks the man-made buildings and structures."
+        },
+        "selected_model": "RS-Image-Understanding-Baseline",
+        "model_used": "RS-Image-Understanding-Baseline",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T18:09:09.847952+00:00",
+        "intent": "image_understanding",
+        "intent_confidence": 0.96,
+        "answer": {
+          "summary": "In this satellite photo, you can see mostly open fields or dry ground (about 58.5%), along with noticeable areas of green plants and crops (29.0%) and water bodies (like lakes or rivers) (8.6%).",
+          "key_findings": [
+            "Greenery & Farmland: Covers about 29.0% of the area (healthy green vegetation).",
+            "Water: A clearly visible river or lake covers about 8.6% of the area.",
+            "Buildings & Roads: Town areas, roofs, and paved roads make up about 3.9%.",
+            "Open Land: The rest (58.5%) is open ground, empty soil, or grasslands."
+          ],
+          "explanation": "What this means: This picture shows an active landscape with a balanced mix of open ground, natural vegetation, and water. In the visual evidence below, green highlights the plant life, blue shows the water, and red marks the man-made buildings and structures."
+        },
+        "evidence": {
+          "original_image": "/evidence/sample_optical_hyderabad_preview.png",
+          "overlay_image": "/evidence/sample_optical_hyderabad_understanding_overlay.png",
+          "difference_image": null
+        },
+        "technical_details": {
+          "dimensions": "512 x 512",
+          "bands": 3,
+          "crs": "EPSG:4326 (WGS84)",
+          "processing_time_sec": 0.08,
+          "preprocessing_info": "Full scene spectral extraction and land-cover segmentation on 512 x 512 raster.",
+          "selected_intent": "image_understanding",
+          "intent_confidence": 0.96,
+          "model_selected": "RS-Image-Understanding-Baseline"
+        },
+        "confidence": 0.75,
+        "processing_time": 0.08
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "user",
+        "message": "Is there water?",
+        "query": "Is there water?",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T18:09:10.044243+00:00"
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "assistant",
+        "message": "Yes, water-like bodies are clearly present in this satellite image.",
+        "query": "Is there water?",
+        "ai_response": {
+          "summary": "Yes, water-like bodies are clearly present in this satellite image.",
+          "key_findings": [
+            "Size: Covers about 8.59% of the total land area.",
+            "Location: Most of it is gathered in the middle-right (east) section.",
+            "Visual Map: The detected areas are marked in bright yellow in the evidence image below."
+          ],
+          "explanation": "What this means: The satellite camera detected distinct color and light patterns that match water. You can see exactly where they are by looking at the yellow areas highlighted in the picture below."
+        },
+        "selected_model": "RS-VQA-Spectral-Baseline",
+        "model_used": "RS-VQA-Spectral-Baseline",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T18:09:10.044243+00:00",
+        "intent": "vqa",
+        "intent_confidence": 0.96,
+        "answer": {
+          "summary": "Yes, water-like bodies are clearly present in this satellite image.",
+          "key_findings": [
+            "Size: Covers about 8.59% of the total land area.",
+            "Location: Most of it is gathered in the middle-right (east) section.",
+            "Visual Map: The detected areas are marked in bright yellow in the evidence image below."
+          ],
+          "explanation": "What this means: The satellite camera detected distinct color and light patterns that match water. You can see exactly where they are by looking at the yellow areas highlighted in the picture below."
+        },
+        "evidence": {
+          "original_image": "/evidence/sample_optical_hyderabad_preview.png",
+          "overlay_image": "/evidence/sample_optical_hyderabad_vqa_overlay.png",
+          "difference_image": null
+        },
+        "technical_details": {
+          "dimensions": "512 x 512",
+          "bands": 3,
+          "crs": "EPSG:4326 (WGS84)",
+          "processing_time_sec": 0.05,
+          "preprocessing_info": "Normalized 3-band raster, evaluated 262144 pixels against water spectral index.",
+          "selected_intent": "vqa",
+          "intent_confidence": 0.96,
+          "model_selected": "RS-VQA-Spectral-Baseline"
+        },
+        "confidence": 0.75,
+        "processing_time": 0.05
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "user",
+        "message": "Are there buildings?",
+        "query": "Are there buildings?",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T18:09:10.242307+00:00"
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "assistant",
+        "message": "Yes, built-up structures and man-made surfaces are clearly present in this satellite image.",
+        "query": "Are there buildings?",
+        "ai_response": {
+          "summary": "Yes, built-up structures and man-made surfaces are clearly present in this satellite image.",
+          "key_findings": [
+            "Size: Covers about 3.89% of the total land area.",
+            "Location: Most of it is gathered in the middle-left (west) section.",
+            "Visual Map: The detected areas are marked in bright yellow in the evidence image below."
+          ],
+          "explanation": "What this means: The satellite camera detected distinct color and light patterns that match buildings. You can see exactly where they are by looking at the yellow areas highlighted in the picture below."
+        },
+        "selected_model": "RS-VQA-Spectral-Baseline",
+        "model_used": "RS-VQA-Spectral-Baseline",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T18:09:10.242307+00:00",
+        "intent": "vqa",
+        "intent_confidence": 0.96,
+        "answer": {
+          "summary": "Yes, built-up structures and man-made surfaces are clearly present in this satellite image.",
+          "key_findings": [
+            "Size: Covers about 3.89% of the total land area.",
+            "Location: Most of it is gathered in the middle-left (west) section.",
+            "Visual Map: The detected areas are marked in bright yellow in the evidence image below."
+          ],
+          "explanation": "What this means: The satellite camera detected distinct color and light patterns that match buildings. You can see exactly where they are by looking at the yellow areas highlighted in the picture below."
+        },
+        "evidence": {
+          "original_image": "/evidence/sample_optical_hyderabad_preview.png",
+          "overlay_image": "/evidence/sample_optical_hyderabad_vqa_overlay.png",
+          "difference_image": null
+        },
+        "technical_details": {
+          "dimensions": "512 x 512",
+          "bands": 3,
+          "crs": "EPSG:4326 (WGS84)",
+          "processing_time_sec": 0.06,
+          "preprocessing_info": "Normalized 3-band raster, evaluated 262144 pixels against buildings spectral index.",
+          "selected_intent": "vqa",
+          "intent_confidence": 0.96,
+          "model_selected": "RS-VQA-Spectral-Baseline"
+        },
+        "confidence": 0.75,
+        "processing_time": 0.06
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "user",
+        "message": "Where is the river?",
+        "query": "Where is the river?",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T18:09:10.478154+00:00"
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "assistant",
+        "message": "A river/water body was located in this image.",
+        "query": "Where is the river?",
+        "ai_response": {
+          "summary": "A river/water body was located in this image.",
+          "key_findings": [
+            "Position: Located towards the middle right side of the image.",
+            "Boundary: Highlighted with a clear glowing box in the visual evidence below.",
+            "Space Occupied: Covers about 8.6% of the total scene area."
+          ],
+          "explanation": "What this means: The assistant identified the location of the river/water body by analyzing distinct shape and color patterns. Check the visual evidence image below to see the exact highlighted area."
+        },
+        "selected_model": "RS-Grounding-Baseline",
+        "model_used": "RS-Grounding-Baseline",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T18:09:10.478154+00:00",
+        "intent": "grounding",
+        "intent_confidence": 0.96,
+        "answer": {
+          "summary": "A river/water body was located in this image.",
+          "key_findings": [
+            "Position: Located towards the middle right side of the image.",
+            "Boundary: Highlighted with a clear glowing box in the visual evidence below.",
+            "Space Occupied: Covers about 8.6% of the total scene area."
+          ],
+          "explanation": "What this means: The assistant identified the location of the river/water body by analyzing distinct shape and color patterns. Check the visual evidence image below to see the exact highlighted area."
+        },
+        "evidence": {
+          "original_image": "/evidence/sample_optical_hyderabad_preview.png",
+          "overlay_image": "/evidence/sample_optical_hyderabad_grounding_overlay.png",
+          "difference_image": null,
+          "bounding_box": [
+            312,
+            25,
+            438,
+            486
+          ]
+        },
+        "technical_details": {
+          "dimensions": "512 x 512",
+          "bands": 3,
+          "crs": "EPSG:4326 (WGS84)",
+          "processing_time_sec": 0.1,
+          "preprocessing_info": "Candidate spatial region extraction with bounding box regression on 512 x 512 grid.",
+          "selected_intent": "grounding",
+          "intent_confidence": 0.96,
+          "model_selected": "RS-Grounding-Baseline"
+        },
+        "confidence": 0.86,
+        "processing_time": 0.1
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "user",
+        "message": "Describe the image.",
+        "query": "Describe the image.",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T18:09:10.693894+00:00"
+      },
+      {
+        "session_id": "test_variation_session",
+        "role": "assistant",
+        "message": "This image shows a broad view of the landscape. Most of the territory is open fields or dry ground, with clear sections of green plants and crops and water bodies (like lakes or rivers) across the view.",
+        "query": "Describe the image.",
+        "ai_response": {
+          "summary": "This image shows a broad view of the landscape. Most of the territory is open fields or dry ground, with clear sections of green plants and crops and water bodies (like lakes or rivers) across the view.",
+          "key_findings": [
+            "Greenery & Farmland: Covers about 29.0% of the area (healthy green vegetation).",
+            "Water: A clearly visible river or lake covers about 8.6% of the area.",
+            "Buildings & Roads: Town areas, roofs, and paved roads make up about 3.9%.",
+            "Open Land: The rest (58.5%) is open ground, empty soil, or grasslands."
+          ],
+          "explanation": "What this means: This picture shows an active landscape with a balanced mix of open ground, natural vegetation, and water. In the visual evidence below, green highlights the plant life, blue shows the water, and red marks the man-made buildings and structures."
+        },
+        "selected_model": "RS-Image-Understanding-Baseline",
+        "model_used": "RS-Image-Understanding-Baseline",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T18:09:10.693894+00:00",
+        "intent": "image_understanding",
+        "intent_confidence": 0.96,
+        "answer": {
+          "summary": "This image shows a broad view of the landscape. Most of the territory is open fields or dry ground, with clear sections of green plants and crops and water bodies (like lakes or rivers) across the view.",
+          "key_findings": [
+            "Greenery & Farmland: Covers about 29.0% of the area (healthy green vegetation).",
+            "Water: A clearly visible river or lake covers about 8.6% of the area.",
+            "Buildings & Roads: Town areas, roofs, and paved roads make up about 3.9%.",
+            "Open Land: The rest (58.5%) is open ground, empty soil, or grasslands."
+          ],
+          "explanation": "What this means: This picture shows an active landscape with a balanced mix of open ground, natural vegetation, and water. In the visual evidence below, green highlights the plant life, blue shows the water, and red marks the man-made buildings and structures."
+        },
+        "evidence": {
+          "original_image": "/evidence/sample_optical_hyderabad_preview.png",
+          "overlay_image": "/evidence/sample_optical_hyderabad_understanding_overlay.png",
+          "difference_image": null
+        },
+        "technical_details": {
+          "dimensions": "512 x 512",
+          "bands": 3,
+          "crs": "EPSG:4326 (WGS84)",
+          "processing_time_sec": 0.08,
+          "preprocessing_info": "Full scene spectral extraction and land-cover segmentation on 512 x 512 raster.",
+          "selected_intent": "image_understanding",
+          "intent_confidence": 0.96,
+          "model_selected": "RS-Image-Understanding-Baseline"
+        },
+        "confidence": 0.75,
+        "processing_time": 0.08
+      }
+    ]
+  },
+  "78cbe3a0-ade0-4957-94ff-06cc588d5344": {
+    "session_id": "78cbe3a0-ade0-4957-94ff-06cc588d5344",
+    "title": "What is visible in this image?",
+    "created_at": "2026-09-11T17:44:51.284457+00:00",
+    "updated_at": "2026-09-11T17:44:51.284457+00:00",
+    "selected_model": "RS-Image-Understanding-Baseline",
+    "image_references": [
+      "sample_optical_hyderabad.tif"
+    ],
+    "messages": [
+      {
+        "session_id": "78cbe3a0-ade0-4957-94ff-06cc588d5344",
+        "role": "user",
+        "message": "What is visible in this image?",
+        "query": "What is visible in this image?",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T17:44:51.284457+00:00"
+      },
+      {
+        "session_id": "78cbe3a0-ade0-4957-94ff-06cc588d5344",
+        "role": "assistant",
+        "message": "In this satellite photo, you can see mostly open fields or dry ground (about 58.5%), along with noticeable areas of green plants and crops (29.0%) and water bodies (like lakes or rivers) (8.6%).",
+        "query": "What is visible in this image?",
+        "ai_response": {
+          "summary": "In this satellite photo, you can see mostly open fields or dry ground (about 58.5%), along with noticeable areas of green plants and crops (29.0%) and water bodies (like lakes or rivers) (8.6%).",
+          "key_findings": [
+            "Greenery & Farmland: Covers about 29.0% of the area (healthy green vegetation).",
+            "Water: A clearly visible river or lake covers about 8.6% of the area.",
+            "Buildings & Roads: Town areas, roofs, and paved roads make up about 3.9%.",
+            "Open Land: The rest (58.5%) is open ground, empty soil, or grasslands."
+          ],
+          "explanation": "What this means: This picture shows an active landscape with a balanced mix of open ground, natural vegetation, and water. In the visual evidence below, green highlights the plant life, blue shows the water, and red marks the man-made buildings and structures."
+        },
+        "selected_model": "RS-Image-Understanding-Baseline",
+        "model_used": "RS-Image-Understanding-Baseline",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T17:44:51.284457+00:00",
+        "intent": "image_understanding",
+        "intent_confidence": 0.96,
+        "answer": {
+          "summary": "In this satellite photo, you can see mostly open fields or dry ground (about 58.5%), along with noticeable areas of green plants and crops (29.0%) and water bodies (like lakes or rivers) (8.6%).",
+          "key_findings": [
+            "Greenery & Farmland: Covers about 29.0% of the area (healthy green vegetation).",
+            "Water: A clearly visible river or lake covers about 8.6% of the area.",
+            "Buildings & Roads: Town areas, roofs, and paved roads make up about 3.9%.",
+            "Open Land: The rest (58.5%) is open ground, empty soil, or grasslands."
+          ],
+          "explanation": "What this means: This picture shows an active landscape with a balanced mix of open ground, natural vegetation, and water. In the visual evidence below, green highlights the plant life, blue shows the water, and red marks the man-made buildings and structures."
+        },
+        "evidence": {
+          "original_image": "/evidence/sample_optical_hyderabad_preview.png",
+          "overlay_image": "/evidence/sample_optical_hyderabad_understanding_overlay.png",
+          "difference_image": null
+        },
+        "technical_details": {
+          "dimensions": "512 x 512",
+          "bands": 3,
+          "crs": "EPSG:4326 (WGS84)",
+          "processing_time_sec": 0.08,
+          "preprocessing_info": "Full scene spectral extraction and land-cover segmentation on 512 x 512 raster.",
+          "selected_intent": "image_understanding",
+          "intent_confidence": 0.96,
+          "model_selected": "RS-Image-Understanding-Baseline"
+        },
+        "confidence": 0.75,
+        "processing_time": 0.08
+      }
+    ]
+  },
+  "00387da7-e3a2-4ad2-9ce7-0e5bff98f244": {
+    "session_id": "00387da7-e3a2-4ad2-9ce7-0e5bff98f244",
+    "title": "New Satellite Analysis",
+    "created_at": "2026-09-11T18:03:20.394724+00:00",
+    "updated_at": "2026-09-11T18:03:20.394724+00:00",
+    "selected_model": "RS-MultiModal-Pipeline",
+    "image_references": [],
+    "messages": []
+  },
+  "1815ed86-0706-4ead-89ac-c4ab0f4e9bc3": {
+    "session_id": "1815ed86-0706-4ead-89ac-c4ab0f4e9bc3",
+    "title": "New Satellite Analysis",
+    "created_at": "2026-09-11T18:03:21.698652+00:00",
+    "updated_at": "2026-09-11T18:03:21.698652+00:00",
+    "selected_model": "RS-MultiModal-Pipeline",
+    "image_references": [],
+    "messages": []
+  },
+  "ad42dc65-af0c-42cc-8cdc-f7a6488c5d6b": {
+    "session_id": "ad42dc65-af0c-42cc-8cdc-f7a6488c5d6b",
+    "title": "What is visible in this image?",
+    "created_at": "2026-09-11T18:08:25.260520+00:00",
+    "updated_at": "2026-09-11T18:08:25.260520+00:00",
+    "selected_model": "RS-Image-Understanding-Baseline",
+    "image_references": [
+      "sample_optical_hyderabad.tif"
+    ],
+    "messages": [
+      {
+        "session_id": "ad42dc65-af0c-42cc-8cdc-f7a6488c5d6b",
+        "role": "user",
+        "message": "What is visible in this image?",
+        "query": "What is visible in this image?",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T18:08:25.163599+00:00"
+      },
+      {
+        "session_id": "ad42dc65-af0c-42cc-8cdc-f7a6488c5d6b",
+        "role": "assistant",
+        "message": "In this satellite photo, you can see mostly open fields or dry ground (about 58.5%), along with noticeable areas of green plants and crops (29.0%) and water bodies (like lakes or rivers) (8.6%).",
+        "query": "What is visible in this image?",
+        "ai_response": {
+          "summary": "In this satellite photo, you can see mostly open fields or dry ground (about 58.5%), along with noticeable areas of green plants and crops (29.0%) and water bodies (like lakes or rivers) (8.6%).",
+          "key_findings": [
+            "Greenery & Farmland: Covers about 29.0% of the area (healthy green vegetation).",
+            "Water: A clearly visible river or lake covers about 8.6% of the area.",
+            "Buildings & Roads: Town areas, roofs, and paved roads make up about 3.9%.",
+            "Open Land: The rest (58.5%) is open ground, empty soil, or grasslands."
+          ],
+          "explanation": "What this means: This picture shows an active landscape with a balanced mix of open ground, natural vegetation, and water. In the visual evidence below, green highlights the plant life, blue shows the water, and red marks the man-made buildings and structures."
+        },
+        "selected_model": "RS-Image-Understanding-Baseline",
+        "model_used": "RS-Image-Understanding-Baseline",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T18:08:25.163599+00:00",
+        "intent": "image_understanding",
+        "intent_confidence": 0.96,
+        "answer": {
+          "summary": "In this satellite photo, you can see mostly open fields or dry ground (about 58.5%), along with noticeable areas of green plants and crops (29.0%) and water bodies (like lakes or rivers) (8.6%).",
+          "key_findings": [
+            "Greenery & Farmland: Covers about 29.0% of the area (healthy green vegetation).",
+            "Water: A clearly visible river or lake covers about 8.6% of the area.",
+            "Buildings & Roads: Town areas, roofs, and paved roads make up about 3.9%.",
+            "Open Land: The rest (58.5%) is open ground, empty soil, or grasslands."
+          ],
+          "explanation": "What this means: This picture shows an active landscape with a balanced mix of open ground, natural vegetation, and water. In the visual evidence below, green highlights the plant life, blue shows the water, and red marks the man-made buildings and structures."
+        },
+        "evidence": {
+          "original_image": "/evidence/sample_optical_hyderabad_preview.png",
+          "overlay_image": "/evidence/sample_optical_hyderabad_understanding_overlay.png",
+          "difference_image": null
+        },
+        "technical_details": {
+          "dimensions": "512 x 512",
+          "bands": 3,
+          "crs": "EPSG:4326 (WGS84)",
+          "processing_time_sec": 0.08,
+          "preprocessing_info": "Full scene spectral extraction and land-cover segmentation on 512 x 512 raster.",
+          "selected_intent": "image_understanding",
+          "intent_confidence": 0.96,
+          "model_selected": "RS-Image-Understanding-Baseline"
+        },
+        "confidence": 0.75,
+        "processing_time": 0.08
+      }
+    ]
+  },
+  "5fa8ec24-88a2-4672-94a8-f6d39ff0595d": {
+    "session_id": "5fa8ec24-88a2-4672-94a8-f6d39ff0595d",
+    "title": "What is visible in this image?",
+    "created_at": "2026-09-11T18:09:05.198126+00:00",
+    "updated_at": "2026-09-11T18:09:05.198126+00:00",
+    "selected_model": "RS-Image-Understanding-Baseline",
+    "image_references": [
+      "sample_optical_hyderabad.tif"
+    ],
+    "messages": [
+      {
+        "session_id": "5fa8ec24-88a2-4672-94a8-f6d39ff0595d",
+        "role": "user",
+        "message": "What is visible in this image?",
+        "query": "What is visible in this image?",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T18:09:05.097500+00:00"
+      },
+      {
+        "session_id": "5fa8ec24-88a2-4672-94a8-f6d39ff0595d",
+        "role": "assistant",
+        "message": "In this satellite photo, you can see mostly open fields or dry ground (about 58.5%), along with noticeable areas of green plants and crops (29.0%) and water bodies (like lakes or rivers) (8.6%).",
+        "query": "What is visible in this image?",
+        "ai_response": {
+          "summary": "In this satellite photo, you can see mostly open fields or dry ground (about 58.5%), along with noticeable areas of green plants and crops (29.0%) and water bodies (like lakes or rivers) (8.6%).",
+          "key_findings": [
+            "Greenery & Farmland: Covers about 29.0% of the area (healthy green vegetation).",
+            "Water: A clearly visible river or lake covers about 8.6% of the area.",
+            "Buildings & Roads: Town areas, roofs, and paved roads make up about 3.9%.",
+            "Open Land: The rest (58.5%) is open ground, empty soil, or grasslands."
+          ],
+          "explanation": "What this means: This picture shows an active landscape with a balanced mix of open ground, natural vegetation, and water. In the visual evidence below, green highlights the plant life, blue shows the water, and red marks the man-made buildings and structures."
+        },
+        "selected_model": "RS-Image-Understanding-Baseline",
+        "model_used": "RS-Image-Understanding-Baseline",
+        "image_ids": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "image_references": [
+          "sample_optical_hyderabad.tif"
+        ],
+        "timestamp": "2026-09-11T18:09:05.097500+00:00",
+        "intent": "image_understanding",
+        "intent_confidence": 0.96,
+        "answer": {
+          "summary": "In this satellite photo, you can see mostly open fields or dry ground (about 58.5%), along with noticeable areas of green plants and crops (29.0%) and water bodies (like lakes or rivers) (8.6%).",
+          "key_findings": [
+            "Greenery & Farmland: Covers about 29.0% of the area (healthy green vegetation).",
+            "Water: A clearly visible river or lake covers about 8.6% of the area.",
+            "Buildings & Roads: Town areas, roofs, and paved roads make up about 3.9%.",
+            "Open Land: The rest (58.5%) is open ground, empty soil, or grasslands."
+          ],
+          "explanation": "What this means: This picture shows an active landscape with a balanced mix of open ground, natural vegetation, and water. In the visual evidence below, green highlights the plant life, blue shows the water, and red marks the man-made buildings and structures."
+        },
+        "evidence": {
+          "original_image": "/evidence/sample_optical_hyderabad_preview.png",
+          "overlay_image": "/evidence/sample_optical_hyderabad_understanding_overlay.png",
+          "difference_image": null
+        },
+        "technical_details": {
+          "dimensions": "512 x 512",
+          "bands": 3,
+          "crs": "EPSG:4326 (WGS84)",
+          "processing_time_sec": 0.07,
+          "preprocessing_info": "Full scene spectral extraction and land-cover segmentation on 512 x 512 raster.",
+          "selected_intent": "image_understanding",
+          "intent_confidence": 0.96,
+          "model_selected": "RS-Image-Understanding-Baseline"
+        },
+        "confidence": 0.75,
+        "processing_time": 0.07
+      }
+    ]
+  },
+  "7177aead-e542-4c5c-ab8d-3f2a919f7c66": {
+    "session_id": "7177aead-e542-4c5c-ab8d-3f2a919f7c66",
+    "title": "New Satellite Analysis",
+    "created_at": "2026-09-11T19:07:17.666418+00:00",
+    "updated_at": "2026-09-11T19:07:17.666418+00:00",
+    "selected_model": "RS-MultiModal-Pipeline",
+    "image_references": [],
+    "messages": []
+  },
+  "5b51b47d-1f11-4b8f-8967-2a613531b7a5": {
+    "session_id": "5b51b47d-1f11-4b8f-8967-2a613531b7a5",
+    "title": "New Satellite Analysis",
+    "created_at": "2026-09-11T19:16:49.135128+00:00",
+    "updated_at": "2026-09-11T19:19:09.711066+00:00",
+    "selected_model": "RS-MultiModal-Pipeline",
+    "image_references": [],
+    "messages": [
+      {
+        "session_id": "5b51b47d-1f11-4b8f-8967-2a613531b7a5",
+        "role": "user",
+        "message": "explain this image",
+        "query": "explain this image",
+        "image_ids": [
+          "stac_S2C_T43RFM_20260910T053601_L2A.tif"
+        ],
+        "image_references": [
+          "stac_S2C_T43RFM_20260910T053601_L2A.tif"
+        ],
+        "timestamp": "2026-09-11T19:17:32.364543+00:00"
+      },
+      {
+        "session_id": "5b51b47d-1f11-4b8f-8967-2a613531b7a5",
+        "role": "assistant",
+        "message": "This satellite view shows an area made up mainly of open fields or dry ground (51.2%), with water bodies (like lakes or rivers) (26.4%) and buildings and roads (20.3%) also clearly visible.",
+        "query": "explain this image",
+        "ai_response": {
+          "summary": "This satellite view shows an area made up mainly of open fields or dry ground (51.2%), with water bodies (like lakes or rivers) (26.4%) and buildings and roads (20.3%) also clearly visible.",
+          "key_findings": [
+            "Water: A clearly visible river or lake covers about 26.4% of the area.",
+            "Buildings & Roads: Town areas, roofs, and paved roads make up about 20.3%.",
+            "Open Land: The rest (51.2%) is open ground, empty soil, or grasslands."
+          ],
+          "explanation": "What this means: This picture shows an active landscape with a balanced mix of open ground, natural vegetation, and water. In the visual evidence below, green highlights the plant life, blue shows the water, and red marks the man-made buildings and structures."
+        },
+        "selected_model": "RS-Image-Understanding-Baseline",
+        "model_used": "RS-Image-Understanding-Baseline",
+        "image_ids": [
+          "stac_S2C_T43RFM_20260910T053601_L2A.tif"
+        ],
+        "image_references": [
+          "stac_S2C_T43RFM_20260910T053601_L2A.tif"
+        ],
+        "timestamp": "2026-09-11T19:17:32.364543+00:00",
+        "intent": "image_understanding",
+        "intent_confidence": 0.72,
+        "answer": {
+          "summary": "This satellite view shows an area made up mainly of open fields or dry ground (51.2%), with water bodies (like lakes or rivers) (26.4%) and buildings and roads (20.3%) also clearly visible.",
+          "key_findings": [
+            "Water: A clearly visible river or lake covers about 26.4% of the area.",
+            "Buildings & Roads: Town areas, roofs, and paved roads make up about 20.3%.",
+            "Open Land: The rest (51.2%) is open ground, empty soil, or grasslands."
+          ],
+          "explanation": "What this means: This picture shows an active landscape with a balanced mix of open ground, natural vegetation, and water. In the visual evidence below, green highlights the plant life, blue shows the water, and red marks the man-made buildings and structures."
+        },
+        "evidence": {
+          "original_image": "/evidence/stac_S2C_T43RFM_20260910T053601_L2A_preview.png",
+          "overlay_image": "/evidence/stac_S2C_T43RFM_20260910T053601_L2A_understanding_overlay.png",
+          "difference_image": null
+        },
+        "technical_details": {
+          "dimensions": "343 x 343",
+          "bands": 3,
+          "crs": "EPSG:4326 (WGS84)",
+          "processing_time_sec": 0.17,
+          "preprocessing_info": "Full scene spectral extraction and land-cover segmentation on 343 x 343 raster.",
+          "selected_intent": "image_understanding",
+          "intent_confidence": 0.72,
+          "model_selected": "RS-Image-Understanding-Baseline"
+        },
+        "confidence": 0.75,
+        "processing_time": 0.17
+      },
+      {
+        "session_id": "5b51b47d-1f11-4b8f-8967-2a613531b7a5",
+        "role": "user",
+        "message": "what is this image",
+        "query": "what is this image",
+        "image_ids": [
+          "stac_S2C_T43RFM_20260910T053601_L2A.tif"
+        ],
+        "image_references": [
+          "stac_S2C_T43RFM_20260910T053601_L2A.tif"
+        ],
+        "timestamp": "2026-09-11T19:19:08.826424+00:00"
+      },
+      {
+        "session_id": "5b51b47d-1f11-4b8f-8967-2a613531b7a5",
+        "role": "assistant",
+        "message": "This satellite view shows an area made up mainly of open fields or dry ground (51.2%), with water bodies (like lakes or rivers) (26.4%) and buildings and roads (20.3%) also clearly visible.",
+        "query": "what is this image",
+        "ai_response": {
+          "summary": "This satellite view shows an area made up mainly of open fields or dry ground (51.2%), with water bodies (like lakes or rivers) (26.4%) and buildings and roads (20.3%) also clearly visible.",
+          "key_findings": [
+            "Water: A clearly visible river or lake covers about 26.4% of the area.",
+            "Buildings & Roads: Town areas, roofs, and paved roads make up about 20.3%.",
+            "Open Land: The rest (51.2%) is open ground, empty soil, or grasslands."
+          ],
+          "explanation": "What this means: This picture shows an active landscape with a balanced mix of open ground, natural vegetation, and water. In the visual evidence below, green highlights the plant life, blue shows the water, and red marks the man-made buildings and structures."
+        },
+        "selected_model": "RS-Image-Understanding-Baseline",
+        "model_used": "RS-Image-Understanding-Baseline",
+        "image_ids": [
+          "stac_S2C_T43RFM_20260910T053601_L2A.tif"
+        ],
+        "image_references": [
+          "stac_S2C_T43RFM_20260910T053601_L2A.tif"
+        ],
+        "timestamp": "2026-09-11T19:19:08.826424+00:00",
+        "intent": "image_understanding",
+        "intent_confidence": 0.72,
+        "answer": {
+          "summary": "This satellite view shows an area made up mainly of open fields or dry ground (51.2%), with water bodies (like lakes or rivers) (26.4%) and buildings and roads (20.3%) also clearly visible.",
+          "key_findings": [
+            "Water: A clearly visible river or lake covers about 26.4% of the area.",
+            "Buildings & Roads: Town areas, roofs, and paved roads make up about 20.3%.",
+            "Open Land: The rest (51.2%) is open ground, empty soil, or grasslands."
+          ],
+          "explanation": "What this means: This picture shows an active landscape with a balanced mix of open ground, natural vegetation, and water. In the visual evidence below, green highlights the plant life, blue shows the water, and red marks the man-made buildings and structures."
+        },
+        "evidence": {
+          "original_image": "/evidence/stac_S2C_T43RFM_20260910T053601_L2A_preview.png",
+          "overlay_image": "/evidence/stac_S2C_T43RFM_20260910T053601_L2A_understanding_overlay.png",
+          "difference_image": null
+        },
+        "technical_details": {
+          "dimensions": "343 x 343",
+          "bands": 3,
+          "crs": "EPSG:4326 (WGS84)",
+          "processing_time_sec": 0.08,
+          "preprocessing_info": "Full scene spectral extraction and land-cover segmentation on 343 x 343 raster.",
+          "selected_intent": "image_understanding",
+          "intent_confidence": 0.72,
+          "model_selected": "RS-Image-Understanding-Baseline"
+        },
+        "confidence": 0.75,
+        "processing_time": 0.08
+      }
+    ]
+  }
+}

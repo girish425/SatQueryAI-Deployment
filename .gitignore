@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+backend/venv/
+venv/
+ENV/
+env/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environment variables & secrets
+.env
+backend/.env
+frontend/.env
+*.local
+
+# Node / Vite
+node_modules/
+frontend/node_modules/
+dist/
+.vite/
+
+# Satellite Large Rasters & Output
+uploads/
+evidence/
+sample_data/
+*.tif
+*.tiff
+*.SAFE
+*.zip
+
+# Cloudflared portable binary
+cloudflared.exe
+.cloudflared/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

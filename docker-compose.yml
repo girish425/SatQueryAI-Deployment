@@ -1,0 +1,22 @@
+services:
+  satquery-ai:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: satquery-ai
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGODB_URI=${MONGODB_URI}
+      - DATABASE_NAME=${DATABASE_NAME:-satquery_ai}
+      - PORT=8000
+    volumes:
+      - satquery_uploads:/app/uploads
+      - satquery_evidence:/app/evidence
+      - satquery_data:/app/data
+
+volumes:
+  satquery_uploads:
+  satquery_evidence:
+  satquery_data:
